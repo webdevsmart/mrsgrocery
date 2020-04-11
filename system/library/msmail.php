@@ -83,6 +83,8 @@ class MsMail extends Model {
 				$mails->add($MailProductPurchased);
 			}
 		}
+		print_r($mails);
+		die();
 		$mailTransport->sendMails($mails);
 	}
 }
