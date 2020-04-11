@@ -1,0 +1,767 @@
+<?xml version="1.0" ?>
+<!DOCTYPE modification [
+		]>
+<modification>
+	<id>MultiMerch + Journal2 theme integration</id>
+	<author>https://multimerch.com/</author>
+
+	<!-- Get Journal theme version -->
+	<file name="admin/controller/multimerch/debug.php">
+		<operation error="skip">
+			<search position="after"><![CDATA[
+				$this->data['active_theme']
+			]]></search>
+			<add><![CDATA[
+				$this->data['active_theme_version'] = defined('JOURNAL_VERSION') ? JOURNAL_VERSION : null;
+			]]></add>
+		</operation>
+	</file>
+
+	<!-- opencart2 loader magic -->
+	<!--<file name="system/engine/loader.php">
+		<operation error="skip">
+			<search position="replace" offset="7"><![CDATA[
+				/* Journal2 modification */
+			]]></search>
+			<add></add>
+		</operation>
+	</file>-->
+
+	<!-- css file -->
+	<file name="catalog/view/theme/*/template/common/header.tpl">
+		<operation error="skip">
+			<search position="after"><![CDATA[$this->journal2->minifier->addStyle('catalog/view/theme/journal2/css/icons.css');]]></search>
+			<add><![CDATA[
+			if(MsLoader::getInstance()->MsHelper->isInstalled()) {
+				$this->journal2->minifier->addStyle('catalog/view/theme/journal2/css/mm.css');
+			}
+			]]></add>
+		</operation>
+	</file>
+
+	<!-- journal layout -->
+	<file name="catalog/view/theme/*/template/multiseller/*.tpl,catalog/view/theme/*/template/multiseller/import/*.tpl,catalog/view/theme/*/template/multiseller/report/*.tpl,catalog/view/theme/*/template/multiseller/settings/default.tpl,catalog/view/theme/*/template/account/register-seller.tpl,catalog/view/theme/*/template/multimerch/*/*.tpl,catalog/view/theme/*/template/customer/*.tpl" error="skip">
+		<!-- add #container to .container -->
+		<operation error="skip">
+			<search position="replace"><![CDATA[<div class="container]]></search>
+			<add><![CDATA[<div id="container" class="container]]></add>
+		</operation>
+
+		<!-- add .success to .alert.alert-success -->
+		<operation error="skip">
+			<search position="replace"><![CDATA[<div class="alert alert-success">]]></search>
+			<add><![CDATA[<div class="alert alert-success success">]]></add>
+		</operation>
+		<operation error="skip">
+			<search position="replace"><![CDATA[<div class="alert alert-<?php echo $statusclass; ?>"><?php echo $statustext; ?></div>]]></search>
+			<add><![CDATA[<div class="alert alert-<?php echo $statusclass; ?> <?php echo $statusclass === 'success' ? 'success' : ''; ?>"><?php echo $statustext; ?></div>]]></add>
+		</operation>
+
+		<!-- add .information to .alert.alert-warning -->
+		<operation error="skip">
+			<search position="replace"><![CDATA[<div class="alert alert-warning">]]></search>
+			<add><![CDATA[<div class="alert alert-warning information">]]></add>
+		</operation>
+
+		<!-- add .heading-title to h1 -->
+		<operation error="skip">
+			<search position="replace"><![CDATA[<h1>]]></search>
+			<add><![CDATA[<h1 class="heading-title">]]></add>
+		</operation>
+
+		<!--  add .secondary-title to h2 -->
+		<operation error="skip">
+			<search position="replace"><![CDATA[<h2>]]></search>
+			<add><![CDATA[<h2 class="secondary-title">]]></add>
+		</operation>
+
+		<!-- add .button to .btn.btn-* -->
+		<operation error="skip">
+			<search position="replace"><![CDATA[btn btn-]]></search>
+			<add><![CDATA[btn button btn-]]></add>
+		</operation>
+
+		<!-- move $column_right; -->
+		<operation error="skip">
+			<search position="replace"><![CDATA[<div class="row"><?php echo $column_left; ?>]]></search>
+			<add><![CDATA[<div class="row"><?php echo $column_left; ?><?php echo $column_right; ?>]]></add>
+		</operation>
+		<operation error="skip">
+			<search position="replace" index="2"><![CDATA[
+			<?php echo $column_right; ?>
+			]]></search>
+			<add><![CDATA[]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/*/template/account/login.tpl">
+		<operation error="skip">
+			<search position="replace"><![CDATA[
+				<a href="<?php echo MsLoader::getInstance()->getRegistry()->get('url')->link('account/register-seller', '', 'SSL'); ?>" class="btn btn-primary"><?php echo $button_continue; ?></a>
+			]]></search>
+			<add><![CDATA[
+				<a href="<?php echo MsLoader::getInstance()->getRegistry()->get('url')->link('account/register-seller', '', 'SSL'); ?>" class="btn btn-primary button"><?php echo $button_continue; ?></a>
+			]]></add>
+		</operation>
+	</file>
+
+	<!-- MsImports -->
+	<file name="catalog/view/theme/*/template/multiseller/import/step2.tpl,catalog/view/theme/*/template/multiseller/import/step3.tpl,catalog/view/theme/*/template/multiseller/import/step4.tpl">
+		<operation error="skip">
+			<search position="replace"><![CDATA[col-sm-12]]></search>
+			<add><![CDATA[
+			row col-sm-12
+			]]></add>
+		</operation>
+		<operation error="skip">
+			<search position="replace" index="1"><![CDATA[col-md-12]]></search>
+			<add><![CDATA[
+			row col-md-12
+			]]></add>
+		</operation>
+	</file>
+
+	<!-- account seller page -->
+	<file name="catalog/view/theme/*/template/account/register-seller.tpl" error="skip">
+		<operation error="skip">
+			<search position="replace"><![CDATA[<p>]]></search>
+			<add><![CDATA[<p class="account-text">]]></add>
+		</operation>
+
+		<operation error="skip">
+			<search position="replace"><![CDATA[<legend>]]></search>
+			<add><![CDATA[<h2 class="secondary-title">]]></add>
+		</operation>
+
+		<operation error="skip">
+			<search position="replace"><![CDATA[</legend>]]></search>
+			<add><![CDATA[</h2>]]></add>
+		</operation>
+	</file>
+
+	<!-- account product page -->
+	<file name="catalog/view/theme/*/template/multiseller/account-product-form.tpl,catalog/view/theme/*/template/multiseller/account-stats.tpl,catalog/view/theme/*/template/multiseller/catalog-seller-profile.tpl,catalog/view/theme/*/template/multiseller/settings/default.tpl,catalog/view/theme/*/template/multiseller/account-attribute.tpl,catalog/view/theme/*/template/multimerch/account/order_info.tpl" error="skip">
+		<operation error="skip">
+			<search position="replace"><![CDATA[<ul id="general-tabs" class="nav nav-tabs">]]></search>
+			<add><![CDATA[<ul id="tabs" class="nav nav-tabs htabs">]]></add>
+		</operation>
+
+		<operation error="skip">
+			<search position="replace"><![CDATA[<ul class="nav nav-tabs">]]></search>
+			<add><![CDATA[<ul id="tabs" class="nav nav-tabs htabs">]]></add>
+		</operation>
+
+		<operation error="skip">
+			<search position="replace"><![CDATA[<ul class="nav nav-tabs]]></search>
+			<add><![CDATA[<ul id="tabs" class="nav nav-tabs htabs]]></add>
+		</operation>
+
+		<operation error="skip">
+			<search position="replace"><![CDATA[tab-pane]]></search>
+			<add><![CDATA[tab-pane tab-content]]></add>
+		</operation>
+
+		<operation error="skip">
+			<search position="replace"><![CDATA[<div class="tab-content]]></search>
+			<add><![CDATA[<div class="tabs-content]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/*/template/product/product.tpl">
+		<operation error="skip">
+			<search position="replace"><![CDATA[tab-pane]]></search>
+			<add><![CDATA[tab-pane tab-content]]></add>
+		</operation>
+
+		<operation error="skip">
+			<search position="before"><![CDATA[
+				<?php echo $footer; ?>
+			]]></search>
+			<add><![CDATA[
+			<?php if(MsLoader::getInstance()->MsHelper->isInstalled()) { ?>
+				<script type="text/javascript">
+					<?php if(isset($product_is_owned_by_customer) && $product_is_owned_by_customer) { ?>
+						$(function() {
+							$('#button-cart').attr('disabled', true);
+							// @todo All other errors in this container are overwritten
+							$('#main-error-holder').html('<i class="fa fa-exclamation-circle"></i> <?php echo $this->language->get('ms_error_product_forbid_to_buy_own_product'); ?>
+								<button type="button" class="close" data-dismiss="alert">&times;</button>').show();
+						});
+					<?php } ?>
+
+					if($('#main-error-holder').length > 0) {
+						$('#main-error-holder').addClass('warning');
+						$('#main-error-holder').css({ "margin-top": "20px" });
+					}
+				</script>
+
+				<script>
+					$(function() {
+						$(document).on('click', '.mm-product-rating a', function() {
+							$('html, body').animate({
+								scrollTop: $("#tabs.nav.nav-tabs").offset().top
+							}, 1000);
+						});
+					});
+				</script>
+			<?php } ?>
+			]]></add>
+		</operation>
+
+		<operation error="skip">
+			<search position="replace"><![CDATA[
+				$('.alert, .text-danger').remove();
+			]]></search>
+			<add><![CDATA[
+				$('.alert, .text-danger').not('#main-error-holder').remove();
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/*/template/multiseller/account-attribute.tpl" error="skip">
+		<operation error="skip">
+			<search position="replace"><![CDATA[ms-account-dashboard]]></search>
+			<add><![CDATA[ms-account-dashboard ms-seller-attributes]]></add>
+		</operation>
+
+		<operation error="skip">
+			<search position="replace"><![CDATA[<h1 class="pull-left]]></search>
+			<add><![CDATA[<h1 class="pull-left heading-title]]></add>
+		</operation>
+
+		<operation error="skip">
+			<search position="replace"><![CDATA[tabs-content]]></search>
+			<add><![CDATA[tabs-content cl]]></add>
+		</operation>
+	</file>
+
+	<!-- account sidebar -->
+	<file name="catalog/view/theme/*/template/multimerch/module/account.tpl" error="skip">
+		<operation error="skip">
+			<search position="replace"><![CDATA[<div class="list-group">]]></search>
+			<add><![CDATA[<div class="box"><div class="box-content list-group"><ul>]]></add>
+		</operation>
+
+		<operation error="skip">
+			<search position="replace"><![CDATA[<div class="collapse list-group-submenu" id="reports-sub">]]></search>
+			<add><![CDATA[<div><div class="box-content collapse list-group-submenu" id="reports-sub"><ul>]]></add>
+		</operation>
+
+		<operation error="skip">
+			<search position="before"><![CDATA[</div>]]></search>
+			<add><![CDATA[</ul></div>]]></add>
+		</operation>
+
+		<operation error="log">
+			<search position="before"><![CDATA[<a]]></search>
+			<add><![CDATA[<li>]]></add>
+		</operation>
+
+		<operation error="log">
+			<search position="after"><![CDATA[</a>]]></search>
+			<add><![CDATA[</li>]]></add>
+		</operation>
+	</file>
+
+	<!-- account dashboard page -->
+	<file name="catalog/view/theme/*/template/multiseller/account-dashboard.tpl" error="skip">
+		<!--  add .secondary-title to h3 -->
+		<operation error="skip">
+			<search position="replace"><![CDATA[<h3>]]></search>
+			<add><![CDATA[<h3 class="secondary-title">]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/*/template/multiseller/account-profile.tpl" error="skip">
+		<operation error="skip">
+			<search position="replace"><![CDATA[tab-content]]></search>
+			<add><![CDATA[]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/*/template/multiseller/*,catalog/view/theme/*/template/multiseller/*/*," error="skip">
+		<operation error="skip">
+			<search position="replace"><![CDATA[alert-danger]]></search>
+			<add><![CDATA[alert-danger warning]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/*/template/multimerch/checkout/cart_coupon.tpl" error="skip">
+		<operation error="skip">
+			<search position="replace"><![CDATA[alert-danger]]></search>
+			<add><![CDATA[alert-danger warning]]></add>
+		</operation>
+	</file>
+
+	<!-- account seller profile page -->
+	<file name="catalog/view/theme/*/template/multiseller/catalog-seller-profile.tpl" error="skip">
+		<!--  add .secondary-title to h3 -->
+		<operation error="skip">
+			<search position="replace" index="1"><![CDATA[<h3>]]></search>
+			<add><![CDATA[<h3 class="secondary-title">]]></add>
+		</operation>
+
+		<operation error="skip">
+			<search position="replace"><![CDATA[
+			<ul class="nav nav-tabs">
+			]]></search>
+			<add><![CDATA[<ul class="nav nav-tabs" id="tabs">]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/*/template/multiseller/catalog-seller-products.tpl" error="skip">
+		<operation error="skip">
+			<search position="replace"><![CDATA[<span class="badge">]]></search>
+			<add><![CDATA[&nbsp;(]]></add>
+		</operation>
+
+		<operation error="skip">
+			<search position="replace"><![CDATA[['total'] ;?></span>]]></search>
+			<add><![CDATA[['total'] ;?>)]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/*/template/multiseller/catalog-seller.tpl" error="skip">
+		<!--  add .secondary-title to h3 -->
+		<operation error="skip">
+			<search position="replace" offset="2"><![CDATA[<div id="search" class="input-group">]]></search>
+			<add><![CDATA[<div id="search" class="input-group" style="display: none">]]></add>
+		</operation>
+		<operation error="skip">
+			<search position="replace"><![CDATA[mm-product-filter]]></search>
+			<add><![CDATA[mm-product-filter product-filter]]></add>
+		</operation>
+		<operation error="skip">
+			<search position="replace"><![CDATA[mm-product-filter]]></search>
+			<add><![CDATA[mm-product-filter product-filter]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/controller/seller/catalog-seller.php" error="skip">
+		<operation error="skip">
+			<search position="after"><![CDATA[$this->load->model('catalog/product');]]></search>
+			<add><![CDATA[
+				$this->load->model('journal2/product');
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/model/journal2/checkout.php">
+		<operation error="skip">
+			<search position="before"><![CDATA[$this->event->trigger('post.order.edit', $data);]]></search>
+			<add><![CDATA[
+			if(MsLoader::getInstance()->MsHelper->isInstalled()) {
+				// Delete leftover records from previous Journal quickcheckout's order creation iteration
+				$this->db->query("DELETE FROM `" . DB_PREFIX . "ms_order_product_data` WHERE order_id = '" . (int)$order_id . "'");
+				$this->db->query("DELETE FROM `" . DB_PREFIX . "ms_order_product_shipping_data` WHERE order_id = '" . (int)$order_id . "'");
+
+				$suborders_query = $this->db->query("SELECT suborder_id FROM `" . DB_PREFIX . "ms_suborder` WHERE order_id = " . (int)$order_id);
+				if ($suborders_query->num_rows) {
+					foreach($suborders_query->rows as $suborder) {
+						$this->db->query("DELETE FROM `" . DB_PREFIX . "ms_suborder` WHERE suborder_id = '" . (int)$suborder['suborder_id'] . "'");
+						$this->db->query("DELETE FROM `" . DB_PREFIX . "ms_suborder_history` WHERE suborder_id = '" . (int)$suborder['suborder_id'] . "'");
+					}
+				}
+
+				$this->MsLoader->MsTransaction->createMsOrderDataEntries($order_id);
+			}
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/controller/journal2/checkout.php">
+		<operation>
+			<search position="after"><![CDATA[
+    public function shipping($return = false) {
+			]]></search>
+			<add><![CDATA[
+			if(MsLoader::getInstance()->MsHelper->isInstalled() && (int)$this->config->get('msconf_shipping_type') == 2) {
+        		MsLoader::getInstance()->getRegistry()->get('load')->controller('multimerch/checkout_shipping_method');
+        		return $this->response->getOutput();
+			}
+			]]></add>
+		</operation>
+
+		<operation>
+			<search position="replace" offset="3"><![CDATA[
+				// shipping method
+			]]>
+			</search>
+			<add>
+				<![CDATA[
+				// shipping method
+				if ($this->isShippingRequired()) {
+					if(MsLoader::getInstance()->MsHelper->isInstalled() && (int)$this->config->get('msconf_shipping_type') == 2) {
+						foreach($this->cart->getProducts() as $product) {
+							if (!isset($this->session->data['ms_cart_product_shipping']['fixed'][$product['product_id']]) && !isset($this->session->data['ms_cart_product_shipping']['combined'][$product['product_id']]) && !isset($this->session->data['ms_cart_product_shipping']['free'][$product['product_id']])) {
+								$order_data['shipping_method'] = 'no shipping method';
+								$this->load->language('multiseller/multiseller');
+								$errors['shipping_method'] = $this->language->get('mm_checkout_shipping_no_selected_methods');
+							}
+						}
+					} elseif (($shipping = explode('.', Journal2Utils::getProperty($this->request->post, 'shipping_method'))) && is_array($shipping) && count($shipping) > 1) {
+			]]>
+			</add>
+		</operation>
+
+		<!-- If smth not working try to change to if(false) here -->
+		<operation>
+			<search position="replace"><![CDATA[
+				if ($value = Journal2Utils::getProperty($this->request->post, 'shipping_method')) {
+			]]>
+			</search>
+			<add>
+				<![CDATA[
+				if(!MsLoader::getInstance()->MsHelper->isInstalled() && $value = Journal2Utils::getProperty($this->request->post, 'shipping_method')) {
+			]]>
+			</add>
+		</operation>
+	</file>
+
+	<file name="catalog/controller/multimerch/checkout_shipping_method.php" error="skip">
+		<operation>
+			<search position="replace"><![CDATA[
+				$this->MsLoader->MsHelper->loadTemplate('multimerch/checkout/shipping_method');
+			]]>
+			</search>
+			<add><![CDATA[
+				$this->MsLoader->MsHelper->loadTemplate('multimerch/checkout/' . ($this->journal2->settings->get('journal_checkout', false) == '1' ? 'shipping_method_quick_checkout' : 'shipping_method'));
+			]]></add>
+		</operation>
+
+		<operation>
+			<search position="replace"><![CDATA[
+				$this->cart->remove($product['cart_id']);
+			]]>
+			</search>
+			<add><![CDATA[
+				// $this->cart->remove($product['cart_id']);
+			]]>
+			</add>
+		</operation>
+
+		<operation>
+			<search position="after" index="1"><![CDATA[
+				$products = $this->cart->getProducts();
+			]]>
+			</search>
+			<add><![CDATA[
+				$products_to_delete = array();
+			]]>
+			</add>
+		</operation>
+
+		<operation>
+			<search position="after"><![CDATA[
+				if(isset($this->request->post['no_shipping_method'][$product['product_id']])) {
+			]]>
+			</search>
+			<add><![CDATA[
+				$products_to_delete[] = $product['cart_id'];
+			]]>
+			</add>
+		</operation>
+
+		<operation>
+			<search position="before"><![CDATA[
+				if(!isset($this->request->post['fixed_shipping_method'])
+			]]>
+			</search>
+			<add><![CDATA[
+				if (!empty($products_to_delete)) {
+					$total_products_with_selected_shipping_method = count($products) - count($products_to_delete);
+					if ((int)$total_products_with_selected_shipping_method === 0) {
+						$json['error']['warning'] = $this->language->get('mm_checkout_shipping_no_selected_methods');
+					} else {
+						foreach ($products_to_delete as $product_cart_id) {
+							$this->cart->remove($product_cart_id);
+						}
+					}
+				}
+			]]>
+			</add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/*/template/journal2/checkout/checkout.tpl">
+		<operation>
+			<search position="after"><![CDATA[<?php echo $header; ?>]]></search>
+			<add><![CDATA[
+			<?php if(MsLoader::getInstance()->MsHelper->isInstalled() && $this->cart->hasShipping()) { ?>
+				<script>
+					$(function () {
+						function getTotalShippingCost() {
+							var selected_methods = $('.checkout-shipping-methods input[type=\'radio\']:checked');
+							var total_shipping_cost = [];
+
+							$(selected_methods).map(function(index, item) {
+								var shipping_cost = $.trim($(this).closest('.radio').find('.cost').text());
+								total_shipping_cost.push(shipping_cost);
+							});
+
+							// Format costs
+							return $.ajax({
+								url: 'index.php?route=multimerch/checkout_shipping_method/jxFormatPrice',
+								type: 'post',
+								data: {total_shipping_cost: total_shipping_cost},
+								dataType: 'json',
+								success: function(json) {
+									/* $('#total-shipping-cost').text(json['total_shipping_cost_formatted']); */
+									//$('input[name="total_shipping_cost"]').val(json['total_shipping_cost']);
+								},
+								error: function(xhr, ajaxOptions, thrownError) {
+									alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+								}
+							});
+						}
+
+						function updateSessionTotal(total_shipping_cost) {
+							$.ajax({
+								url: 'index.php?route=multimerch/checkout_shipping_method/jxSave',
+								type: 'post',
+								data: $('.checkout-shipping-methods input[type="radio"]:checked, input[name^="free_shipping"], input[name^="digital"], input[name^="no_shipping_method"]'),
+								dataType: 'json',
+								beforeSend: function() {
+									$('#button-shipping-method').button('loading');
+								},
+								success: function(json) {
+									$('.alert, .text-danger').remove();
+
+									if (json.hasOwnProperty('redirect')) {
+										window.location = json['redirect'];
+									} else if (json.hasOwnProperty('error') && json['error'].hasOwnProperty('warning')) {
+										$('.heading-title').after('<div class="text-danger" style="padding: 8px; width: 100%; margin-bottom: 20px">' + json['error']['warning'] + '</div>');
+										$('.confirm-order').hide();
+									} else {
+										$(document).trigger('journal_checkout_shipping_changed', total_shipping_cost);
+										$('.confirm-order').show();
+									}
+								},
+								error: function(xhr, ajaxOptions, thrownError) {
+									console.error(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+									alert("Error: " + xhr.responseText);
+								}
+							});
+						}
+
+						$(document).on('change', '.checkout-shipping-methods input[type="radio"]', processShipping);
+
+						<?php if ((int)$this->config->get('msconf_shipping_type') == 2) { ?>
+							setTimeout(processShipping, 500);
+
+							$(document).on('click', '.checkout-cart .quantity .btn-update', processShipping);
+						<?php } ?>
+
+						function processShipping() {
+							$.when( getTotalShippingCost() ).then(function() {
+								var jsonData = arguments[0];
+								var jqXHR = arguments[2];
+								if (jqXHR.status == 200) {
+									updateSessionTotal(jsonData['total_shipping_cost']);
+								}
+							});
+						}
+					});
+				</script>
+			<?php } ?>
+			]]>
+			</add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/*/template/module/multimerch_newsellers.tpl,catalog/view/theme/*/template/module/multimerch_topsellers.tpl" error="skip">
+		<operation error="skip">
+			<search position="replace"><![CDATA[
+				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 one-seller-panel">
+			]]></search>
+			<add><![CDATA[
+				<div class="xl-33 lg-33 md-50 sm-100 xs-100 one-seller-panel">
+				]]></add>
+		</operation>
+		<operation error="skip">
+			<search position="replace"><![CDATA[
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+			]]></search>
+			<add><![CDATA[
+				<div class="sm-30 md-30 lg-30 xl-30">
+				]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/*/template/multiseller/account-order-info-conversation.tpl,catalog/view/theme/*/template/multiseller/account-message.tpl,catalog/view/theme/*/template/multimerch/account/order_info.tpl" error="skip">
+		<operation error="skip">
+			<search position="replace"><![CDATA[
+				row ms-message
+			]]></search>
+			<add><![CDATA[
+				ms-message
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/*/template/multiseller/account-order-info.tpl" error="skip">
+		<operation error="skip">
+			<search position="before"><![CDATA[
+				<table class="table
+			]]></search>
+			<add><![CDATA[
+				<div class="table-responsive">
+			]]></add>
+		</operation>
+
+		<operation error="skip">
+			<search position="after"><![CDATA[
+				</table>
+			]]></search>
+			<add><![CDATA[
+				</div>
+			]]></add>
+		</operation>
+
+		<operation error="skip">
+			<search position="replace"><![CDATA[
+				table-bordered text-center
+			]]></search>
+			<add><![CDATA[
+				table-bordered text-center list
+			]]></add>
+		</operation>
+
+		<operation error="skip">
+			<search position="replace"><![CDATA[
+				style="padding: 25px;border: 1px solid #e8e8e8;
+			]]></search>
+			<add><![CDATA[
+				style="padding: 25px;border: 1px solid #e8e8e8; text-align: center;
+			]]></add>
+		</operation>
+	</file>
+
+	<!-- Shipping from dropdown fix at seller's settings page -->
+	<file name="catalog/view/theme/*/template/multiseller/settings/default.tpl" error="skip">
+		<operation error="skip">
+			<search position="before"><![CDATA[
+				</script>
+			]]></search>
+			<add><![CDATA[
+				$(document).on('ready', function() {
+					$(document).on('focus', '#mm_shipping_from_country', function() {
+						$("ul.dropdown-menu").css({'position' : 'initial'});
+					});
+				});
+			]]></add>
+		</operation>
+	</file>
+
+	<!-- Quickchekout seller info -->
+	<file name="catalog/view/theme/journal2/template/journal2/checkout/cart.tpl" error="skip">
+		<operation error="skip">
+			<search position="after"><![CDATA[
+				<?php echo $product['name']; ?></a>
+			]]></search>
+			<add><![CDATA[
+				<?php
+					if(MsLoader::getInstance()->MsHelper->isInstalled()) {
+						MsLoader::getInstance()->getRegistry()->get('load')->language('multiseller/multiseller');
+						$seller = MsLoader::getInstance()->MsSeller->getSeller(MsLoader::getInstance()->MsProduct->getSellerId($product['product_id']));
+						if ($seller) {
+							echo "<span class='ms-by-seller'>" . MsLoader::getInstance()->getRegistry()->get('language')->get('ms_by') . " <a href='". $this->url->link('seller/catalog-seller/profile', 'seller_id=' . $seller['seller_id']) ."'>{$seller['ms.nickname']}</a>";
+						}
+					}
+				?>
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/*/template/multiseller/account-dashboard.tpl" error="skip">
+		<operation error="skip">
+			<search position="replace"><![CDATA[mm_boards]]></search>
+			<add><![CDATA[mm_boards row]]></add>
+		</operation>
+
+		<operation error="skip">
+			<search position="replace"><![CDATA[col-lg-3]]></search>
+			<add><![CDATA[xl-20]]></add>
+		</operation>
+
+		<operation error="skip">
+			<search position="replace"><![CDATA[col-lg-6]]></search>
+			<add><![CDATA[xl-50]]></add>
+		</operation>
+
+		<operation error="skip">
+			<search position="replace"><![CDATA[col-md-6]]></search>
+			<add><![CDATA[md-50]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/*/template/multiseller/account-coupon-form.tpl" error="skip">
+		<operation error="skip">
+			<search position="replace"><![CDATA[col-xs-12]]></search>
+			<add><![CDATA[xs-100]]></add>
+		</operation>
+		<operation error="skip">
+			<search position="replace"><![CDATA[col-sm-12]]></search>
+			<add><![CDATA[sm-100]]></add>
+		</operation>
+		<operation error="skip">
+			<search position="replace"><![CDATA[col-md-12]]></search>
+			<add><![CDATA[md-100]]></add>
+		</operation>
+		<operation error="skip">
+			<search position="replace"><![CDATA[col-lg-12]]></search>
+			<add><![CDATA[lg-100 xl-100]]></add>
+		</operation>
+		<operation error="skip">
+			<search position="replace"><![CDATA[col-lg-5]]></search>
+			<add><![CDATA[lg-40 xl-40]]></add>
+		</operation>
+		<operation error="skip">
+			<search position="replace"><![CDATA[col-lg-2]]></search>
+			<add><![CDATA[lg-20 xl-20]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/model/checkout/order.php" error="skip">
+		<operation error="skip">
+			<search position="replace"><![CDATA[
+				$this->MsLoader->MsTransaction->createMsOrderDataEntries($order_id);
+			]]></search>
+			<add><![CDATA[
+				if(!$this->journal2->settings->get('journal_checkout', false))
+					$this->MsLoader->MsTransaction->createMsOrderDataEntries($order_id);
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/*/template/multimerch/checkout/cart_coupon.tpl" error="skip">
+		<operation error="skip">
+			<search position="replace"><![CDATA[tab-content]]></search>
+			<add><![CDATA[tabs-content]]></add>
+		</operation>
+	</file>
+
+	<!-- MM SEO delete journal microdata -->
+	<file name="catalog/controller/journal2/snippets.php" error="skip">
+		<operation error="skip">
+			<search position="before"><![CDATA[$this->journal2->settings->set('share_metas']]></search>
+			<add><![CDATA[
+				if (MsLoader::getInstance()->MsHelper->isInstalled() && $this->config->get('msconf_config_seo_url_enable')) {
+					$metas = array();
+				}
+			]]></add>
+		</operation>
+	</file>
+	<file name="catalog/view/theme/*/template/product/product.tpl" error="skip">
+		<operation error="skip">
+			<search position="replace"><![CDATA[itemscope]]></search>
+			<add><![CDATA[
+				<?php if (MsLoader::getInstance()->MsHelper->isInstalled() && $this->config->get('msconf_config_seo_url_enable')) { ?>
+				<?php }else{ ?>
+					itemscope
+				<?php } ?>
+			]]></add>
+		</operation>
+	</file>
+
+</modification>

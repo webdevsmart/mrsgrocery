@@ -1,0 +1,51 @@
+/* top navigation */
+.nav-wizard{
+	margin-left: auto;
+	margin-right: auto;
+	width: 85%;
+}
+
+.import_content .nav-wizard > li > a {
+	padding: 10px 80px;
+	cursor: default;
+}
+
+/* slider */
+.slider{
+	width:100%;
+	overflow:hidden;
+	position:relative;
+	padding-top: 10px;
+}
+#slider{
+	position:relative;
+	left:0px;
+	white-space:nowrap;
+}
+#slider>div{
+	display:inline-block;
+	width:100%;
+	vertical-align: top;
+}
+
+/* Steps */
+.step_header{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.step_header .step_header_text{
+	font-size: 18px;
+	font-weight: bold;
+}
+.step_header .step_header_steps{
+	padding-right: 0px;
+	color: #999999;
+}
+.step_footer{
+	margin-top: 20px;
+}
+.table .preview_information{
+	word-break: break-all;
+	overflow: auto;
+	white-space: normal;
+}

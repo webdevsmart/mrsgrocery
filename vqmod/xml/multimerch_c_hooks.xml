@@ -1,0 +1,172 @@
+<?xml version="1.0" ?>
+<!DOCTYPE modification [
+]>
+<modification>
+	<id>MultiMerch + Journal2 theme hooks</id>
+	<version>1.7.4</version>
+	<author>https://multimerch.com/</author>
+	<comment><![CDATA[
+		MultiMerch 8.14.2 + Journal 2.16.1
+	]]></comment>
+
+	<themename>Journal2</themename>
+
+	<!-- product page hooks -->
+	<file name="catalog/view/theme/*/template/product/product.tpl">
+		<!-- tab headers -->
+		<operation error="log">
+			<search position="after" index="1" offset="2"><![CDATA[<?php if (!$this->journal2->settings->get('hide_product_description')) { ?>]]></search>
+			<add><![CDATA[<!-- mm tab header start -->]]></add>
+		</operation>
+
+		<operation error="log">
+			<search position="before" index="1"><![CDATA[
+				<?php $index = 0; foreach ($this->journal2->settings->get('additional_product_tabs', array()) as $tab): $index++; ?>
+			]]></search>
+			<add><![CDATA[<!-- mm tab header end -->]]></add>
+		</operation>
+
+		<!-- product info blocks -->
+		<operation error="log">
+			<search position="before" offset="1" index="3"><![CDATA[<div class="journal-custom-tab">]]></search>
+			<add><![CDATA[
+				<div style="margin-top: 15px;">
+					<!-- mm attributes end -->
+				</div>
+			]]></add>
+		</operation>
+
+        <!-- Product Questions tab -->
+        <operation error="log">
+            <search position="after"><![CDATA[
+				<div class="tabs-content">
+			]]></search>
+            <add><![CDATA[
+				<!-- tab MM questions -->
+			]]></add>
+        </operation>
+
+        <!-- Product Disqus comments tab -->
+        <operation error="log">
+            <search position="after"><![CDATA[
+				<div class="tabs-content">
+			]]></search>
+            <add><![CDATA[
+				<!-- tab MM disqus comments -->
+			]]></add>
+        </operation>
+
+        <!-- Product Reviews tab -->
+        <operation error="log">
+            <search position="after"><![CDATA[
+				<div class="tabs-content">
+			]]></search>
+            <add><![CDATA[
+				<!-- tab MM reviews -->
+			]]></add>
+        </operation>
+
+        <!-- Product Shipping tab -->
+        <operation error="log">
+            <search position="after"><![CDATA[
+				<div class="tabs-content">
+			]]></search>
+            <add><![CDATA[
+				<!-- tab MM shipping -->
+			]]></add>
+        </operation>
+
+		<!-- Product Custom Fields tab -->
+		<operation error="log">
+			<search position="after"><![CDATA[
+				<div class="tabs-content">
+			]]></search>
+			<add><![CDATA[
+				<!-- tab MM custom fields -->
+			]]></add>
+		</operation>
+
+        <!-- Product rating stars -->
+        <operation error="log">
+			<search position="before" index="3"><![CDATA[
+				<?php if ($review_status) { ?>
+			]]></search>
+            <add><![CDATA[
+				<!-- MM rating stars -->
+			]]></add>
+        </operation>
+	</file>
+
+	<!-- login / menu hooks -->
+	<file name="catalog/view/theme/*/template/account/login.tpl">
+		<operation error="log">
+			<search position="after"><![CDATA[<a href="<?php echo $register; ?>" class="btn btn-primary button"><?php echo $button_continue; ?></a></div>]]></search>
+			<add><![CDATA[
+				<!-- mm register form end -->
+			]]></add>
+		</operation>
+	</file>
+
+	<!-- seller account menu in header -->
+	<file name="catalog/view/theme/*/template/journal2/headers/*.tpl">
+		<operation error="log">
+			<search position="before"><![CDATA[<?php echo $this->journal2->settings->get('config_secondary_menu'); ?>]]></search>
+			<add><![CDATA[
+				<!-- mm header menu start -->
+			]]></add>
+		</operation>
+
+		<operation error="log">
+			<search position="after"><![CDATA[<?php echo $this->journal2->settings->get('config_secondary_menu'); ?>]]></search>
+			<add><![CDATA[
+				<!-- mm header menu end -->
+			]]></add>
+		</operation>
+	</file>
+
+	<!-- account area menu -->
+	<file name="catalog/view/theme/*/template/account/account.tpl">
+		<operation error="log">
+			<search position="before"><![CDATA[<h2 class="secondary-title"><?php echo $text_my_account; ?></h2>]]></search>
+			<add><![CDATA[
+				<!-- mm account menu start -->
+			]]></add>
+		</operation>
+
+		<operation error="skip">
+			<search position="before"><![CDATA[<h2 class="secondary-title"><?php echo $text_my_orders; ?></h2>]]></search>
+			<add><![CDATA[
+				<!-- mm account menu orders start -->
+			]]></add>
+		</operation>
+
+		<operation error="log">
+			<search position="before"><![CDATA[<?php echo $content_bottom; ?></div>]]></search>
+			<add><![CDATA[
+				<!-- mm account menu newsletter start -->
+			]]></add>
+		</operation>
+
+		<operation error="log">
+			<search position="before"><![CDATA[<?php echo $content_bottom; ?>]]></search>
+			<add><![CDATA[<!-- mm account menu end -->]]></add>
+		</operation>
+	</file>
+
+	<!-- account sidebar menu -->
+	<file name="catalog/view/theme/*/template/module/account.tpl">
+		<operation error="log">
+			<search position="before"><![CDATA[<div class="box-content list-group">]]></search>
+			<add><![CDATA[
+				<!-- mm account sidebar menu start -->
+			]]></add>
+		</operation>
+
+		<operation error="log">
+			<search position="after" offset="1"><![CDATA[</ul>]]></search>
+			<add><![CDATA[
+				<!-- mm account sidebar menu end -->
+			]]></add>
+		</operation>
+	</file>
+</modification>

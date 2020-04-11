@@ -1,0 +1,83 @@
+---------- Date: 2020-04-11 08:21:56 ~ IP : 156.34.186.119 ----------
+REQUEST URI : /
+MOD DETAILS:
+   modFile   : /home/mrbrett/public_html/vqmod/xml/multimerch_c_hooks.xml
+   id        : 
+   version   : 
+   vqmver    : 
+   author    : 
+
+File Name    : catalog/view/theme/*/template/common/header.tpl(0)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <div id="top-links" class="nav pull-right">
+
+File Name    : catalog/view/theme/*/template/common/header.tpl(1)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <li><a href="<?php echo $checkout; ?>" title="<?php echo $text_checkout; ?>"><i class="fa fa-share"></i> <span class="hidden-xs hidden-sm hidden-md"><?php echo $text_checkout; ?></span></a></li>
+MOD DETAILS:
+   modFile   : /home/mrbrett/public_html/vqmod/xml/multimerch_core_sellermenu.xml
+   id        : MultiMerch Core Seller Menu
+   version   : 
+   vqmver    : 
+   author    : http://multimerch.com/
+
+File Name    : catalog/view/theme/*/template/common/header.tpl(0)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
+
+File Name    : catalog/view/theme/*/template/common/header.tpl(1)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2020-04-11 08:32:24 ~ IP : 156.34.186.119 ----------
+REQUEST URI : /
+MOD DETAILS:
+   modFile   : /home/mrbrett/public_html/vqmod/xml/multimerch_core_sellermenu.xml
+   id        : MultiMerch Core Seller Menu
+   version   : 
+   vqmver    : 
+   author    : http://multimerch.com/
+
+File Name    : catalog/view/theme/*/template/common/header.tpl(0)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <li><a href="<?php echo $download; ?>"><?php echo $text_download; ?></a></li>
+
+File Name    : catalog/view/theme/*/template/common/header.tpl(1)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <li><a href="<?php echo $account; ?>"><?php echo $text_account; ?></a></li>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2020-04-11 09:18:14 ~ IP : 188.43.136.32 ----------
+REQUEST URI : /products/test1-8/
+MOD DETAILS:
+   modFile   : /home/mrbrett/public_html/vqmod/xml/multimerch_c_hooks.xml
+   id        : MultiMerch + Journal2 theme hooks
+   version   : 1.7.4
+   vqmver    : 
+   author    : https://multimerch.com/
+
+File Name    : catalog/view/theme/*/template/product/product.tpl(0)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <?php if (!$this->journal2->settings->get('hide_product_description')) { ?>
+
+----------------------------------------------------------------------
+
+
+---------- Date: 2020-04-11 09:31:27 ~ IP : 188.43.136.32 ----------
+REQUEST URI : /account/order/info/?order_id=1
+MOD DETAILS:
+   modFile   : /home/mrbrett/public_html/vqmod/xml/multimerch_core_sellerinfos.xml
+   id        : MultiMerch Core seller information in various places
+   version   : 
+   vqmver    : 
+   author    : http://multimerch.com/
+
+File Name    : catalog/view/theme/*/template/account/order_info.tpl(8)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <table class="table table-bordered table-hover"
+
+File Name    : catalog/view/theme/*/template/account/order_info.tpl(9)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <table class="table table-bordered table-hover"
+
+File Name    : catalog/view/theme/*/template/account/order_info.tpl(10)
+VQModObject::applyMod - SEARCH NOT FOUND (SKIPPED): <table class="table table-bordered table-hover"
+----------------------------------------------------------------------
+
+

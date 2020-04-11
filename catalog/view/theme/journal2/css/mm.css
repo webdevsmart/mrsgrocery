@@ -1,0 +1,1211 @@
+/*
+  Journal - Advanced Opencart Theme Framework
+  Multi-Merch compatibility CSS
+  Copyright (c) 2015 Digital Atelier
+  http://journal.digital-atelier.com/
+*/
+
+
+/******************************
+ HEADER MENU
+*******************************/
+
+.mm-header-link{
+    position:relative;
+    display: inline-block;
+}
+
+.links .mm-header-link{
+    display:table-cell;
+    vertical-align: middle;
+    padding: 0 6px;
+}
+
+.mm-header-link > div{
+    padding-top: 14px;
+    position: absolute;
+    width: 100%;
+    visibility: hidden;
+}
+
+.mm-header-link:hover div,
+.mm-header-link:hover div .dropdown-menu {
+    display:block;
+    visibility: visible;
+}
+
+.journal-secondary .dropdown-menu{
+    transition: all 0.2s;
+    top:12px;
+}
+
+.journal-secondary .dropdown-menu:before{
+    content: "\e61e";
+    position: absolute;
+    left: 50%;
+    top: -13px;
+    margin-left: -9px;
+    color: white;
+    font-size: 16px;
+}
+
+#content .buttons{
+    width: 100%;
+}
+
+.mm-well{
+    margin-top: 20px;
+}
+
+.mm-well p{
+    margin-bottom: 10px;
+}
+
+.mm-well p + p{
+    margin-bottom: 40px;
+}
+
+.mm_view {
+    margin-top: -35px;
+    margin-right: 10px;
+    color: rgb(255, 255, 255);
+}
+
+.info-box{
+    margin-bottom: 20px;
+}
+
+.info-box .list-unstyled li{
+    padding-bottom: 5px;
+}
+.info-box .list-unstyled li:last-of-type{
+    padding-bottom: 0;
+}
+
+.thumbnails {
+    overflow: auto;
+    clear: both;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.thumbnails {
+    margin-bottom: 20px;
+}
+
+.thumbnail>img,
+.thumbnail a>img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.seller-data:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.seller-data .secondary-title{
+    margin-bottom: 20px;
+}
+
+.seller-data .row{
+    margin-right: -20px;
+}
+
+.seller-data #tab-description .row > div{
+    width: 33.3333%;
+    float:left;
+    /*padding-right: 20px;*/
+    text-align: center;
+    margin-bottom: 20px;
+}
+.product-thumb h4{
+    font-weight: normal;
+}
+.ms-catalog-seller-profile #content > .row > div{
+    float:left;
+    width: 66.6666%;
+}
+.ms-catalog-seller-profile #content .row .col-sm-4{
+    width: 33.3333%;
+    padding-left: 20px;
+}
+
+.ms-sellerprofile.description h3 {
+    height: 35px;
+    line-height: 35px;
+    background-color: #f4f4f4;
+    color: #333745;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+.ms-account-product-form .input-group.date button{
+    max-height: 34px;
+    line-height: 20px;
+}
+
+.note-editor .btn-default {
+    color: #777;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    background-color: #e7e7e7;
+    background-image: linear-gradient(to bottom, #eeeeee, #dddddd);
+    background-repeat: repeat-x;
+    border-color: #dddddd #dddddd #b3b3b3 #b7b7b7;
+}
+.note-editor .btn-group{
+    float: left;
+    border-radius: 4px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.note-editor .btn-group .btn{
+    border-radius: 0;
+}
+
+.note-toolbar .note-color .dropdown-toggle{
+    width: 20px;
+    padding-left: 5px;
+}
+
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px solid;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+
+.note-editor .btn-default i.fa{
+    color: inherit;
+}
+
+.note-editor .btn-group.open .dropdown-toggle {
+    -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+    box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+}
+
+.note-editor .note-editable{
+    background-color: white;
+}
+
+.note-editor .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: 14px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    background-clip: padding-box;
+}
+
+.btn-default.active{
+    color: #333;
+    background-color: #ebebeb;
+    border-color: #adadad;
+    outline: 0;
+    background-image: none;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+    box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+}
+blockquote {
+    padding: 10px 20px;
+    margin: 0 0 20px;
+    font-size: 17.5px;
+    border-left: 5px solid #eee;
+}
+
+.note-editor .btn-group .dropdown-menu{
+    display: none !important;
+}
+.note-editor .btn-group.open .dropdown-menu{
+    display: block !important;
+}
+
+.ms-note {
+    font-size: 11px;
+    font-style: italic;
+    margin: 8px 0;
+}
+
+.ms-account-product-form .form-horizontal .form-group label{
+    padding-top: 2px;
+    width: auto;
+    padding-right: 5px;
+}
+
+/* seller list */
+.catalog-seller .caption p{
+    margin-bottom: 4px;
+    margin-left: 5px;
+}
+.catalog-seller .caption .name a,
+.catalog-seller .caption p{
+    text-align: left;
+}
+.catalog-seller .caption {
+    min-height: 100%;
+}
+.catalog-seller .caption {
+	min-height: 100%;
+}
+.catalog-seller .mm_top_products_right{
+	padding: 0;
+}
+.catalog-seller #content.col-sm-12{
+	padding: 20px 10px 0 10px;
+}
+.catalog-seller .mm-product-filter{
+	margin: 0 10px;
+	width: auto;
+}
+.catalog-seller .mm-product-filter div:first-child{
+	float: none;
+	display: inline-block;
+	margin-left: 3px;
+}
+.catalog-seller .ms-sellers-panel{
+	margin: 10px 0;
+}
+.catalog-seller #ms-sellers-panel-map .ms-sellers-panel{
+	margin: 20px 0;
+}
+.catalog-seller .mm-one-seller{
+	text-align: center;
+}
+.catalog-seller .mm-one-seller .panel-title > a{
+	color: #23527c;
+}
+
+/* seller panel */
+.one-seller-panel{
+	padding: 10px;
+}
+.one-seller-panel .panel-body{
+	padding: 15px 0;
+}
+.one-seller-panel .panel-title > a{
+	padding: 0 15px;
+	color: #23527c;
+}
+.one-seller-panel ul.list-unstyled li{
+	padding: 0 15px;
+}
+.one-seller-panel .mm-one-seller-products{
+	max-width: 300px;
+	margin: 0 auto;
+}
+.one-seller-panel .mm-one-seller-products img{
+	max-width: 90%;
+}
+
+#ms-withdrawal .form-group{
+    padding:20px;
+}
+
+#ms-withdrawal .form-group + .form-group{
+    padding-top: 0;
+}
+.ms-account-transaction p{
+    margin-bottom: 8px;
+}
+
+
+@media only screen and (max-width: 760px) {
+    ul.ms-sellermenu.graphical li {
+        width: 48%;
+    }
+    .ms-account-dashboard .row > div{
+        width:100%;
+    }
+    .ms-catalog-seller-profile #content > .row > div {
+        width: 100%;
+    }
+    .ms-catalog-seller-profile #content .row .col-sm-4 {
+        padding-left: 0;
+    }
+    .ms-catalog-seller-profile .info-box>div {
+        margin-left: 0;
+    }
+    .seller-data .row > div {
+        width: 50%;
+    }
+}
+
+.table-responsive {
+    overflow-x: auto !important;
+}
+
+.ms-account-dashboard .table-responsive {
+    clear: left;
+}
+
+@media (min-width: 992px) {
+    .mm_dashboard .col-md-4, .route-seller-account-transaction .col-sm-4 {
+        width: 33.33333333%;
+        float: left;
+        position: relative;
+        min-height: 1px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+}
+
+.mm_seller {
+    clear: both;
+}
+
+.product-thumb {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    overflow: auto;
+}
+
+.mm_top_products_left #search input {
+    background: white;
+    border-radius: 0px;
+    border: 1px solid #E4E4E4;
+    padding: 8px;
+}
+
+.oc2 .ms-account-dashboard fieldset {
+    border: 1px solid #E5E5E5;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.oc2 .ms-account-dashboard .tab-content,
+.oc2 .ms-account-dashboard .ms-seller-settings .tab-content.active,
+.oc2 .ms-account-dashboard.ms-seller-attributes .tab-content.active {
+    display: block;
+}
+
+.oc2 .ms-account-dashboard .ms-seller-settings .tab-content,
+.oc2 .ms-account-dashboard.ms-seller-attributes .tab-content {
+    display: none;
+}
+
+.oc2 .ms-account-dashboard .ms-seller-settings ul.pg-topbar li a {
+    padding: 8px 15px !important;
+}
+.oc2 .ms-account-dashboard .ms-seller-settings ul.pg-topbar li.active {
+    border: 1px solid rgb(95, 104, 116);
+}
+
+.ms-seller-settings #ms-seller-shipping table .form-inline .input-group,
+.ms-seller-settings #ms-seller-shipping table .ffSample .form-inline .input-group{
+    display: inline-table;
+    vertical-align: middle;
+}
+
+.ms-seller-settings .pg-message.alert-success {
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    height: auto;
+    padding: 10px 15px;
+    line-height: 20px;
+    background-color: #CDECA6;
+    margin-top: 10px;
+}
+
+.ms-seller-settings .pg-message.alert-danger {
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    height: auto;
+    padding: 10px 15px;
+    line-height: 20px;
+    background-color: #FBE3A7;
+    margin-top: 10px;
+}
+
+.oc2 .ms-account-dashboard fieldset label + input.form-control {
+    width: auto;
+    float: none;
+}
+
+.ms-account-dashboard .form-inline .form-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}
+
+.mm_req:after {
+    content: "";
+}
+
+.mm_req:before {
+    content: "* ";
+    color: red;
+    font-weight: bold;
+    font-size: 16px;
+    position: relative;
+    top: 3px;
+    margin-right: 3px;
+}
+
+#ms-new-product {
+    background-color: white;
+}
+
+.well {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+}
+
+.mm_currency_right {
+    position: absolute;
+    margin-right: 25px;
+    margin-top: -24px;
+    font-size: 15px;
+    right: 0;
+}
+
+.hidden {
+    display: none!important;
+}
+
+.oc2 .ms-account-dashboard .input-group-btn {
+    position: relative;
+    font-size: 0;
+    white-space: nowrap;
+}
+
+.oc2 .ms-account-dashboard .input-group-btn button {
+    padding: 0 12px;
+}
+
+.oc2 .ms-account-dashboard .table .input-group.date {
+    margin: 0;
+}
+
+.oc2 .ms-account-dashboard .input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}
+
+.oc2 #addQuestion {
+    margin-bottom: 10px;
+}
+
+.oc2.route-account-login a[href$="account/register-seller"] {
+    margin-top: 10px;
+    padding: 0 10px;
+    line-height: 30px;
+    /*background-color: rgb(235, 88, 88);*/
+}
+
+.oc2 select[name$="[price_prefix]"] {
+    display: inline-block;
+}
+
+.oc2 .form-control.inline.mm_size_small.mm_price {
+    /*width: 60%;*/
+}
+
+.oc2 #ms-new-product fieldset > div {
+    overflow: visible;
+}
+
+.oc2 #sellerinfo_avatar_files,
+.oc2 #sellerinfo_banner_files {
+    position: relative;
+}
+
+.oc2.route-seller-catalog-seller-products #content > .row:first-child {
+    overflow: hidden;
+}
+
+.oc2.route-seller-catalog-seller-products #content > .row:last-child {
+    padding-bottom: 10px;
+}
+
+.oc2.route-seller-catalog-seller-products .mm_top_products_left #search input[type="text"] {
+    width: auto;
+    display: inline-block;
+    float: none;
+    color: #000;
+}
+
+.oc2.route-seller-catalog-seller-products .mm_top_products_left #search {
+    display: none;
+}
+
+.oc2 #ms-sellercontact-text {
+    box-sizing: border-box;
+}
+
+#tab-questions .panel-heading {
+    height: 55px !important;
+}
+
+.oc2.route-account-order .order-heading {
+    background-color: rgb(244, 244, 244)
+}
+.oc2.route-account-order .order-actions .btn-default {
+    margin-top:0;
+}
+
+.oc2.route-account-order .panel-order,
+.oc2 .mm_dashboard {
+    overflow: hidden;
+}
+
+.ms-catalog-seller-products a.list-group-item {
+    display: block;
+}
+
+.ms-catalog-seller-products #content > .row:first-of-type {
+    height: 40px;
+}
+
+.product-grid .product-wrapper {
+    overflow: visible;
+}
+
+.pagination .dataTables_paginate .paginate_button {
+    display: inline !important;
+    width: auto !important;
+    height: auto !important;
+    line-height: normal !important;
+}
+
+/* seller profile */
+.ms-catalog-seller-profile .top-banner {
+    float: none !important;
+    width: 100% !important;
+}
+.ms-catalog-seller-profile .top-banner .thumbnail img {
+    margin-left: auto;
+    margin-right: auto;
+}
+.ms-catalog-seller-profile #tab-description div, #tab-description p:not(:only-of-type) {
+	margin-bottom: 0;
+}
+.ms-catalog-seller-profile .tab-content h4{
+	margin-bottom: 0;
+}
+.ms-catalog-seller-profile .main-products .product-wrapper .product-details .name a{
+	height: inherit;
+}
+.ms-catalog-seller-products .main-products .product-wrapper .product-details .name a{
+	height: inherit;
+}
+.ms-catalog-seller-profile .mm_decription ul.list-unstyled li, .ms-catalog-seller-profile .mm_decription ul.list-unstyled li h3{
+	display: block;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.ms-catalog-seller-profile .mm_decription .info-box > div{
+	margin-left: 0;
+}
+
+
+.table .quantity {
+    float:none;
+}
+
+.product-holder .order-actions a.action {
+    width: auto;
+}
+
+
+.seller-data .tab-content {
+    /*display: block;*/
+}
+
+.seller-data .tab-content #search {
+    display: none;
+}
+
+.seller-data #tab-description {
+    overflow: hidden;
+}
+
+.input-group-addon {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #EEEEEE;
+}
+.input-group-addon {
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.input-group-addon {
+    display: table-cell;
+}
+
+.input-group-addon:first-child {
+    border-right: 0;
+}
+
+.input-group-addon:last-child {
+    border-left: 0;
+}
+
+#mm_product_shipping .product_free_shipping {
+    line-height: 19px;
+}
+
+#mm_product_shipping .product_free_shipping .checkbox {
+    float: left;
+    margin-left: 0;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.rating.hide {
+    display: none !important;
+}
+
+.journal-checkout .shipping-method-select label {
+    border-bottom: 0 !important;
+}
+
+.checkout-sm-product-name {
+    padding-top: 20px;
+    width: 25%;
+}
+
+.journal-checkout .shipping-radio label {
+    display: inline-block !important;
+    padding: 0 5px 0 0 !important;
+}
+
+.journal-checkout .shipping-radio .shipping-price {
+    display: inline;
+}
+
+.journal-checkout .checkout-shipping-methods .panel-body {
+    padding: 0;
+}
+
+.journal-checkout .checkout-shipping-methods .panel-body > div {
+    padding: 12px;
+}
+
+/* Journal 2.8.3 fixes */
+.product-page-content .mm-product-rating .rating-container {
+    margin-top: -10px;
+}
+
+.account-page #content h2 {
+    width: 100%;
+    float: left;
+    margin-top: 0;
+}
+
+.account-page #content ul.list-unstyled li a i {
+    font-size: 50px;
+    width: 50px;
+    height: 50px;
+}
+
+.account-page #content ul.list-unstyled li {
+    text-align: center;
+    width: 15.5%;
+    height: 128px;
+    display: inline;
+    float: left;
+}
+
+.account-page #content ul.list-unstyled li a span {
+    display: block;
+}
+
+.account-page #content ul.list-unstyled li a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* MM Newsellers/Topsellers modules fixes */
+.row.module .product-thumb .image {
+    text-align: center;
+}
+
+.row.module .product-thumb h4 {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.ms-catalog-seller-profile .mm_stats .rating-container {
+    margin-top: -14px;
+}
+
+.ms-catalog-seller-profile .mm_stats .profile-rating ~ span  {
+    font-size: 12px;
+}
+
+.ms-catalog-seller-profile #tab-review {
+    overflow-x: hidden;
+}
+
+.ms-catalog-seller-profile #tab-review .review-stars > .row > div:first-child {
+    width: 50%;
+    float: left;
+}
+
+.ms-catalog-seller-profile #tab-review .review-stars > .row > div:last-of-type {
+    margin-top: 30px;
+}
+
+.ms-catalog-seller-profile #tab-review .review-thumbnails {
+    margin-left: 0;
+}
+
+/* Fix responsive icons in seller's dashboard */
+@media (max-width: 720px) {
+    .account-page #content ul.list-unstyled li {
+        width: 25%;
+    }
+}
+
+@media (max-width: 320px) {
+    .account-page #content ul.list-unstyled li {
+        width: 50%;
+    }
+
+    .ms-catalog-seller-profile #tab-review .review-stars-left, .ms-catalog-seller-profile #tab-review .review-stars-right {
+        float: none;
+        width: 100%;
+    }
+
+    .ms-catalog-seller-profile #content .row .col-sm-4{
+        width: 100%;
+    }
+
+    .ms-catalog-seller-profile #tab-review .review-stars > .row > div:first-child,
+    .ms-catalog-seller-profile #tab-review .review-stars > .row > div:last-of-type {
+        width: 100%;
+    }
+}
+
+.checkout #collapse-shipping-method .cart-products h3 {
+    padding: 15px 0;
+}
+
+.checkout #collapse-shipping-method .cart-products .sm-select {
+    width: 60%;
+}
+
+/* MM feedback fix */
+.feedback-heading .col-md-10{
+	float: left;
+	width: 80%;
+}
+
+.feedback-heading .col-md-2{
+	float: left;
+	width: 20%;
+}
+
+.feedback-heading + .panel-body .product-holder .col-md-3{
+	float: left;
+	width: 25%;
+}
+
+.feedback-heading + .panel-body .product-holder .col-md-5{
+	float: left;
+	width: 40%;
+}
+
+.feedback-heading + .panel-body .product-holder .col-md-2{
+	float: left;
+	width: 15%;
+}
+
+.one-page-checkout .product-info > div {
+	width: auto;
+	float: none;
+}
+
+#list-products tbody td:last-child a {
+    margin-left: 0;
+}
+
+.oc2 .ms-account-dashboard .dropdown, .oc2 .ms-account-dashboard .dropup {
+    position: relative;
+}
+
+.oc2 .ms-account-dashboard .dropdown-menu {
+    right: 0;
+    left: auto;
+}
+
+.oc2 .ms-account-dashboard .open {
+    background-color: #8ca0aa;
+}
+
+.oc2 .ms-account-dashboard .open .dropdown-toggle.btn-default {
+    color: #ffffff;
+}
+
+.oc2 .ms-account-dashboard .open > .dropdown-menu {
+   display: block;
+}
+
+.oc2 .ms-account-dashboard .open > .dropdown-menu li > a:hover {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #229ac8;
+    background-image: linear-gradient(to bottom, #23a1d1, #1f90bb);
+    background-repeat: repeat-x;
+}
+
+/* Messaging */
+.oc2 #seller_history .ms-message-attachment ul {
+    margin: 0;
+    padding: 0;
+}
+
+.oc2 #seller_history .ms-message-sender {
+    width: 120px;
+}
+
+.oc2 #seller_history .ms-message-form .ms-message-upload {
+    margin-bottom: 0;
+}
+
+/* Seller's order info */
+.oc2 .ms-account-order-info table td.col-sm-3, .oc2 .ms-account-order-info table td.col-md-3 {
+    width: 20%;
+}
+
+.oc2 .ms-account-order-info table td.col-sm-6, .oc2 .ms-account-order-info table td.col-md-6 {
+    width: 60%;
+}
+
+.oc2 .ms-account-order-info select#order_status {
+    display: block;
+}
+
+@media only screen and (max-width: 470px) {
+    /* Seller's dashboard responsive */
+    .ms-account-dashboard .mm_submead a {
+        margin-top: -7px;
+    }
+
+    .ms-account-dashboard #mm_dashboard_orders td.products p.product_options,
+    .ms-account-dashboard #mm_dashboard_orders td.products p.product_options small {
+        display: block;
+    }
+
+
+    /* Customer's order list responsive */
+    .panel-order .product-holder .row > div {
+        text-align: center;
+    }
+
+    .panel-order .order-heading .row > span.order-number {
+        margin-top: 5px;
+    }
+
+    .panel-order .product-holder .order-actions a, .panel-order .product-holder .quantity {
+        float: none;
+    }
+}
+
+.ms-review.form-horizontal #mm_images .thumbnails .image-additional {
+    float: left;
+    margin-left: 20px;
+}
+
+#ms_product_reviews #reviews-pag .paginationjs-page {
+    margin-left: 0;
+}
+
+#ms_product_reviews .rating-stats {
+    width: 50%;
+    float: left;
+}
+
+@media only screen and (max-width: 470px) {
+    #ms_product_reviews .rating-stats {
+        width: 100%;
+    }
+}
+
+/* Attributes, option, categories */
+.ms-seller-attributes .heading-title {
+    width: 73%;
+}
+
+.ms-seller-attributes #tabs {
+    margin-top: 7px;
+}
+
+.lang-img-icon-input-text {
+    margin-top: 5px;
+}
+
+#option-values {
+    border-top: 1px solid #E5E5E5;
+    padding-top: 10px;
+}
+
+.route-account-msmessage ul.breadcrumb:last-of-type {
+    display: none;
+}
+
+.route-customer-review-create .feedback-heading .sub-table .sub-row .sub-table-heading,
+.route-customer-review-create .feedback-heading .order-number {
+    color: white;
+}
+
+.form-rate-rating-stars .rating {
+    margin-top: -10px;
+}
+
+/* Product page > Shipping tab */
+.shipping-info .shipping-methods-list table {
+    width: 100% !important;
+}
+
+/* Reviews */
+.review-comment {
+    padding-top: 10px;
+    padding-left: 5%;
+}
+
+.review-comment .header {
+    position: inherit;
+    box-shadow: none !important;
+}
+
+/* Product page > Seller info box */
+.mm_box.mm_description .info-box > div {
+    display: block;
+}
+.ms-catalog-seller-products .mm_box.mm_description .info-box ul.list-unstyled {
+	clear: both;
+}
+.ms-catalog-seller-products .product-thumb .caption h4 a{
+	width: 100%;
+}
+
+/* MsDahsboard and MsReports */
+.side-column div.list-group-submenu li a {
+    padding-left: 30px;
+}
+
+.side-column .list-group .list-group-item .fa-caret-down {
+    margin-left: 5px;
+}
+
+/* MsImport */
+.import_content .nav-wizard {
+    list-style: none;
+	width: 100%;
+}
+
+.import_content .nav-wizard > li > a {
+    padding: 12px 80px;
+	background-color: #d5d5d5;
+}
+
+.import_content .nav-wizard > li > a::after {
+	border-left-color: #d5d5d5;
+}
+
+.import_content .nav-wizard > li.active > a {
+	background-color: #428bca;
+}
+
+.import_content .nav-wizard > li.active > a::after {
+	border-left-color: #428bca;
+}
+
+.import_content #file-holder .fa-file {
+    font-size: 100px;
+}
+.import_content #file-holder span.file-name {
+    font-size: 12px;
+    margin: 3px 0 0 13px;
+}
+
+.import_content .col-sm-6.step_footer {
+    display: inline-block;
+}
+.import_content .col-sm-6.step_footer.text-right {
+    float: right;
+}
+
+/* Custom fields at product page */
+.product-tabs #tab-mm-cf table {
+    border-spacing: 2px;
+}
+
+.product-tabs #tab-mm-cf table ul {
+    margin-top: 0;
+}
+.product-tabs #tab-mm-cf table ul > li {
+    margin-left: 0;
+}
+
+/* Custom fields at seller's product form */
+#ms-new-product .ms-image .fa-file:before {
+    font-size: 80px;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+#ms-new-product .ms-image .file-name {
+    font-size: 10px;
+    left: 3px;
+}
+
+#ms-new-product .ms-image .ms-remove {
+    margin: 0;
+}
+
+/* Ms coupons */
+
+.ms-coupon .max-uses-input .input-group-addon, .ms-coupon .max-uses-customer-input .input-group-addon  {
+	min-width: 190px;
+}
+
+.ms-coupon .max-uses-input input[type="text"], .ms-coupon .max-uses-customer-input input[type="text"]  {
+	min-width: 145px;
+}
+
+.ms-coupon .max-uses-input {
+	margin-right: 55px;
+}
+
+.ms-coupon .input-group.date .input-group-addon {
+	min-width: 100px;
+}
+
+.ms-coupon .input-group.date input[type="text"] {
+	min-width: 195px;
+}
+
+.ms-coupon .input-group.date:first-of-type {
+	margin-right: 55px;
+}
+
+.ms-coupon .ms-note {
+	clear: both;
+	padding-top: 5px;
+	margin-top: 0;
+}
+
+.ms-coupon .selectize-control {
+	position: inherit;
+}
+
+button#button-cart:disabled {
+	pointer-events: none;
+	opacity: 0.4;
+}
+
+#product-gallery .swiper-button-prev::before, #product-gallery .swiper-button-next::before {
+	top: 10px !important;
+}
+
+.ms-remove{
+	color: red;
+	cursor: pointer;
+}
+
+#ms-new-product .form-group > div > .radio-inline ~ .ms-note {
+    margin-top: 40px;
+}
+
+#ms-new-product .form-group > div > .well {
+    padding: 12px;
+}
+#ms-new-product .form-group > div > .well .checkbox > label {
+    display: block;
+    width: 100%;
+    padding: 0;
+}
+.alert-danger.warning{
+	background-color: #EA2E49;
+	color: rgb(250, 250, 250);
+}
+
+/* new payment alerts */
+.payment-methods .methods-info .alert{
+	display: inline-flex;
+	background: none;
+	padding: 5px;
+}
+.payment-methods .methods-info .alert-info{
+	color: blue;
+}
+.payment-methods .methods-info .alert-danger{
+	color: red;
+}
+.payment-methods .methods-info .alert-danger ul{
+	padding: 0;
+	margin: 0;
+}
+.payment-methods .methods-info .alert-danger ul li{
+	margin-left: 0;
+}
+.payment-methods .methods-info .alert-danger ul li i{
+	display: none;
+}
+.payment-methods .methods-info .alert-danger button.close{
+	display: none;
+}
+
+/* seller products page menu */
+.ms-catalog-seller-products .list-group-item:first-child {
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+.ms-catalog-seller-products .list-group a.list-group-item {
+	border: 1px solid #DDDDDD;
+	color: inherit;
+	padding: 8px 5px;
+	position: relative;
+	display: block;
+	margin-bottom: -1px;
+	background-color: #fff;
+}
+
+/* Seller dashboard 8.14 */
+.oc2 .seller-dashboard .ms-dashboard-widget:not(.total) {
+    min-height: 270px;
+}
+
+.oc2 .seller-dashboard .mm_dashboard > .row:first-of-type > div:not(:last-of-type) {
+    margin-right: 50px;
+}

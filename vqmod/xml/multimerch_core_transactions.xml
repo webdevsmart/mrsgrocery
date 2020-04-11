@@ -1,0 +1,208 @@
+<?xml version="1.0" ?>
+<!DOCTYPE modification [
+]>
+<modification>
+	<id>MultiMerch Core Transactions</id>
+	<author>http://multimerch.com/</author>
+	
+	<!-- transactions for order -->
+	<file name="catalog/model/checkout/order.php">
+		<operation>
+			<search position="before"><![CDATA[return $order_id;]]></search>
+			<add><![CDATA[
+			if(MsLoader::getInstance()->MsHelper->isInstalled())
+				$this->MsLoader->MsTransaction->createMsOrderDataEntries($order_id);
+			]]></add>
+		</operation>
+
+		<operation>
+			<search position="after"><![CDATA[
+				$this->db->query("UPDATE `" . DB_PREFIX . "order` SET order_status_id = '" . (int)$order_status_id . "', date_modified = NOW() WHERE order_id = '" . (int)$order_id . "'");
+			]]></search>
+			<add><![CDATA[
+			if(MsLoader::getInstance()->MsHelper->isInstalled())
+				$this->MsLoader->MsTransaction->createMsOrderBalanceEntries($order_id, $order_status_id);
+			]]></add>
+		</operation>
+
+		<operation>
+			<search position="after"><![CDATA[
+				if (!in_array($order_info['order_status_id'], array_merge($this->config->get('config_processing_status')
+			]]></search>
+			<add><![CDATA[
+			if(MsLoader::getInstance()->MsHelper->isInstalled()) {
+				$event_exists = $this->ms_event_manager->getEvents(array(
+					'event_type' => \MultiMerch\Event\Event::ORDER_CREATED,
+					'data' => json_encode(array('order_id' => (int)$order_id)),
+					'single' => 1
+				));
+
+				if(empty($event_exists)) {
+					$this->ms_events->add(new \MultiMerch\Event\Event(array(
+						'customer_id' => $this->customer->getId(),
+						'event_type' => \MultiMerch\Event\Event::ORDER_CREATED,
+						'data' => array('order_id' => (int)$order_id)
+					)));
+				}
+
+				if($this->ms_events->count()) {
+					$this->ms_event_manager->create($this->ms_events);
+				}
+			}
+			]]></add>
+		</operation>
+	</file>
+
+	<!-- Fix admin order edit -->
+	<file name="catalog/controller/api/order.php">
+		<operation>
+			<search position="after"><![CDATA[
+				$this->model_checkout_order->editOrder($order_id, $order_data);
+			]]></search>
+			<add><![CDATA[
+			if(MsLoader::getInstance()->MsHelper->isInstalled())
+				$this->MsLoader->MsTransaction->adminUpdateMsOrderDataEntries($order_id);
+			]]></add>
+		</operation>
+
+		<operation>
+			<search position="after"><![CDATA[
+				$this->model_checkout_order->addOrderHistory($order_id,
+			]]></search>
+			<add><![CDATA[
+			if(MsLoader::getInstance()->MsHelper->isInstalled()) {
+				$transactions = $this->MsLoader->MsTransaction->createMsOrderBalanceEntries($order_id, $this->request->post['order_status_id']);
+
+				$transaction_ids = [];
+				foreach($transactions as $transaction_id) {
+					if($transaction_id) $transaction_ids[] = $transaction_id;
+				}
+
+				$suborders = $this->MsLoader->MsSuborder->getSuborders(array(
+					'order_id' => $order_id
+				));
+
+				$sellers_suborders_info = array();
+				foreach($suborders as $suborder) {
+					$sellers_suborders_info[] = $suborder['seller'] . ' (#' . $order_id . '-' . $suborder['suborder_id']. ')';
+				}
+
+				$this->load->language('multiseller/multiseller');
+				$json['success'] = sprintf($this->language->get('ms_order_success_suborders_modified'), $order_id, implode(', ', $sellers_suborders_info));
+
+				if(!empty($transaction_ids)) {
+					$json['success'] .= ' ' . sprintf($this->language->get('ms_order_success_transactions_created'), implode(', ', $transaction_ids));
+				}
+			}
+			]]></add>
+		</operation>
+
+		<operation>
+			<search position="replace" index="5"><![CDATA[
+				$json['success'] = $this->language->get('text_success');
+			]]></search>
+			<add><![CDATA[
+			if(!MsLoader::getInstance()->MsHelper->isInstalled()) {
+				$json['success'] = $this->language->get('text_success');
+			}
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="admin/view/template/marketing/coupon_form.tpl">
+		<operation>
+			<search position="before"><![CDATA[
+				<div class="panel panel-default">
+			]]></search>
+			<add><![CDATA[
+			<?php if(MsLoader::getInstance()->MsHelper->isInstalled()) { ?>
+				<div class="alert alert-warning" role="alert">
+					<?php echo MsLoader::getInstance()->getRegistry()->get('language')->get('ms_fixed_coupon_warning'); ?>
+				</div>
+			<?php } ?>
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="admin/view/template/sale/voucher_form.tpl">
+		<operation>
+			<search position="before"><![CDATA[
+				<div class="panel panel-default">
+			]]></search>
+			<add><![CDATA[
+			<?php if(MsLoader::getInstance()->MsHelper->isInstalled()) { ?>
+				<div class="alert alert-warning" role="alert">
+					<?php echo MsLoader::getInstance()->getRegistry()->get('language')->get('ms_voucher_warning'); ?>
+				</div>
+			<?php } ?>
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="admin/view/template/sale/voucher_list.tpl">
+		<operation>
+			<search position="before"><![CDATA[
+				<div class="panel panel-default">
+			]]></search>
+			<add><![CDATA[
+			<?php if(MsLoader::getInstance()->MsHelper->isInstalled()) { ?>
+				<div class="alert alert-warning" role="alert">
+					<?php echo MsLoader::getInstance()->getRegistry()->get('language')->get('ms_voucher_warning'); ?>
+				</div>
+			<?php } ?>
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/controller/extension/total/coupon.php">
+		<operation>
+			<search position="before"><![CDATA[
+				$this->response->addHeader
+			]]></search>
+			<add><![CDATA[
+			if(MsLoader::getInstance()->MsHelper->isInstalled()) {
+				if(isset($coupon_info["type"]) AND $coupon_info["type"] == "F"){
+					unset($json['redirect']);
+					unset($this->session->data['success']);
+					unset($this->session->data['coupon']);
+					$this->load->language('multiseller/multiseller');
+					$json['error'] = $this->language->get('ms_error_fixed_coupon_warning');
+				}
+			}
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/controller/extension/total/voucher.php">
+		<operation>
+			<search position="before"><![CDATA[
+				$this->response->addHeader
+			]]></search>
+			<add><![CDATA[
+			if(MsLoader::getInstance()->MsHelper->isInstalled()) {
+				unset($json['redirect']);
+				unset($this->session->data['success']);
+				unset($this->session->data['voucher']);
+				$this->load->language('multiseller/multiseller');
+				$json['error'] = $this->language->get('ms_error_voucher_warning');
+			}
+			]]></add>
+		</operation>
+	</file>
+
+	<!-- MultiMerch Discount coupons -->
+	<file name="catalog/controller/checkout/cart.php">
+		<operation>
+			<search position="replace"><![CDATA[$result = $this->load->controller('extension/total/' . basename($file, '.php'));]]></search>
+			<add><![CDATA[
+				$ms_controller_path = 'extension/total/' . basename($file, '.php');
+
+				if(MsLoader::getInstance()->MsHelper->isInstalled() && $this->config->get('msconf_allow_seller_coupons') && (string)basename($file, '.php') === 'coupon') {
+					$ms_controller_path = 'multimerch/cart_coupon';
+				}
+
+				$result = $this->load->controller($ms_controller_path);
+			]]></add>
+		</operation>
+	</file>
+</modification>

@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<!DOCTYPE modification [
+]>
+<modification>
+	<id>MultiMerch Core SEO</id>
+	<author>http://multimerch.com/</author>
+
+	<file error="log" name="system/library/pagination.php">
+		<operation error="log">
+			<search position="after"><![CDATA[
+				$output .= '</ul>';
+			]]></search>
+			<add><![CDATA[
+				$output = str_replace('?page={page}', '', $output);
+			]]></add>
+		</operation>
+	</file>
+
+	<file name="catalog/view/theme/*/template/common/header.tpl">
+		<operation>
+			<search position="before"><![CDATA[
+				</head>
+			]]></search>
+			<add><![CDATA[
+           	<?php if (MsLoader::getInstance()->MsHelper->isInstalled() && $this->config->get('msconf_config_seo_url_enable')) { ?>
+           	<?php echo $this->load->controller('startup/multimerch_seo_microdata'); ?>
+			<?php } ?>
+			]]></add>
+		</operation>
+	</file>
+</modification>

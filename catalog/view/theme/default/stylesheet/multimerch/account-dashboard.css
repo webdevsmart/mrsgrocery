@@ -1,0 +1,199 @@
+/* MultiMerch Dashboard */
+/* Common */
+.seller-account-dashboard > .container > .row {
+	margin-left: 0;
+}
+
+.seller-dashboard {
+	background-color: #f3f5f5;
+}
+
+.seller-dashboard .page-header h1 {
+	margin-top: 15px;
+}
+
+.seller-dashboard > .mm_dashboard > .row {
+	margin-top: 20px;
+}
+
+.seller-dashboard > .container-fluid > .row:last-of-type {
+	margin-bottom: 20px;
+}
+
+.seller-dashboard .ms-dashboard-widget:not(.total) {
+	padding: 20px;
+	background: #FFFFFF;
+	min-height: 250px;
+}
+
+.seller-dashboard .ms-dashboard-widget.list {
+	min-height: 290px;
+}
+
+.seller-dashboard .ms-dashboard-widget:not(.total) .body.empty {
+	display: table;
+	width: 100%;
+	min-height: 185px;
+}
+
+.seller-dashboard .ms-dashboard-widget:not(.total) .body .no-results {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 14px;
+}
+
+.seller-dashboard .ms-dashboard-widget .heading, .seller-dashboard .ms-dashboard-widget .heading h3 {
+	font-size: 14px;
+	font-weight: 500;
+	margin-top: 0;
+}
+
+/* Totals */
+.seller-dashboard .ms-dashboard-widget.total .heading {
+	padding: 5px 15px;
+	color: #FFFFFF;
+}
+
+.seller-dashboard .ms-dashboard-widget.total .heading a {
+	color: #FFFFFF;
+}
+
+.seller-dashboard .ms-dashboard-widget.total .body {
+	padding: 15px 10px;
+	color: #FFFFFF;
+	font-size: 22px;
+	min-height: 55px;
+}
+
+.seller-dashboard .ms-dashboard-widget.total .body i {
+	padding-left: 5px;
+	font-size: 22px;
+	position: absolute;
+	z-index: 1;
+}
+
+.seller-dashboard .ms-dashboard-widget.total .body p {
+	position: relative;
+	z-index: 10;
+}
+
+.seller-dashboard .ms-dashboard-widget.total.sales .heading {
+	background-color: #6AAC54;
+}
+.seller-dashboard .ms-dashboard-widget.total.sales .body {
+	background-color: #76BC5E;
+}
+.seller-dashboard .ms-dashboard-widget.total.sales .body i {
+	color: #6AAC54;
+}
+
+.seller-dashboard .ms-dashboard-widget.total.orders .heading {
+	background-color: #F5AA5D;
+}
+.seller-dashboard .ms-dashboard-widget.total.orders .body {
+	background-color: #FFB15E;
+}
+.seller-dashboard .ms-dashboard-widget.total.orders .body i {
+	color: #EBA257;
+}
+
+.seller-dashboard .ms-dashboard-widget.total.customers .heading {
+	background-color: #38A0BA;
+}
+.seller-dashboard .ms-dashboard-widget.total.customers .body {
+	background-color: #42AFCA;
+}
+.seller-dashboard .ms-dashboard-widget.total.customers .body i {
+	color: #3B9BB2;
+}
+
+.seller-dashboard .ms-dashboard-widget.total.online .heading {
+	background-color: #68BA8B;
+}
+.seller-dashboard .ms-dashboard-widget.total.online .body {
+	background-color: #82D1A3;
+}
+.seller-dashboard .ms-dashboard-widget.total.online .body i {
+	color: #65B286;
+}
+
+.seller-dashboard .ms-dashboard-widget.total.sellers .heading {
+	background-color: #6AAC54;
+}
+.seller-dashboard .ms-dashboard-widget.total.sellers .body {
+	background-color: #76BC5E;
+}
+.seller-dashboard .ms-dashboard-widget.total.sellers .body i {
+	color: #629950;
+}
+
+.seller-dashboard .ms-dashboard-widget.total.balances .heading {
+	background-color: #38A0BA;
+}
+.seller-dashboard .ms-dashboard-widget.total.balances .body {
+	background-color: #42AFCA;
+}
+.seller-dashboard .ms-dashboard-widget.total.balances .body i {
+	color: #38A0BA;
+}
+
+.seller-dashboard .ms-dashboard-widget.total.products .heading {
+	background-color: #525657;
+}
+.seller-dashboard .ms-dashboard-widget.total.products .body {
+	background-color: #585C5D;
+}
+.seller-dashboard .ms-dashboard-widget.total.products .body i {
+	color: #47494A;
+}
+
+.seller-dashboard .ms-dashboard-widget.total.views .heading {
+	background-color: #525657;
+}
+.seller-dashboard .ms-dashboard-widget.total.views .body {
+	background-color: #585C5D;
+}
+.seller-dashboard .ms-dashboard-widget.total.views .body i {
+	color: #47494A;
+}
+
+/* Lists */
+.seller-dashboard .ms-dashboard-widget.list a {
+	font-weight: bold;
+}
+
+.seller-dashboard .ms-dashboard-widget.list a.order {
+	color: #F57878;
+}
+.seller-dashboard .ms-dashboard-widget.list a.seller {
+	color: #76BC5E;
+}
+.seller-dashboard .ms-dashboard-widget.list a.customer {
+	color: #42AFCA;
+}
+.seller-dashboard .ms-dashboard-widget.list a.product {
+	color: #4E5456;
+}
+
+.seller-dashboard .ms-dashboard-widget.list .ms-status-failed {
+	padding: 2px 5px;
+	color: #FFFFFF;
+	background-color: #F57878;
+	border: 1px solid #F57878;
+	border-radius: 5px;
+}
+.seller-dashboard .ms-dashboard-widget.list .ms-status-pending {
+	padding: 2px 5px;
+	color: #FFFFFF;
+	background-color: #FFB15E;
+	border: 1px solid #FFB15E;
+	border-radius: 5px;
+}
+.seller-dashboard .ms-dashboard-widget.list .ms-status-completed {
+	padding: 2px 5px;
+	color: #FFFFFF;
+	background-color: #76BC5E;
+	border: 1px solid #76BC5E;
+	border-radius: 5px;
+}
