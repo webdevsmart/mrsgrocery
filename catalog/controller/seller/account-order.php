@@ -191,6 +191,9 @@ class ControllerSellerAccountOrder extends ControllerSellerAccount {
 		$this->MsLoader->MsHelper->addStyle('multimerch_messaging');
 
 		list($template, $children) = $this->MsLoader->MsHelper->loadTemplate('account-order-info');
+		print_r('-------------test git--------------');
+		print_r($this->data);
+		die();
 		$this->response->setOutput($this->load->view($template, array_merge($this->data, $children)));
 	}
 	
