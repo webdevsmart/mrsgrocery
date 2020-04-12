@@ -241,8 +241,6 @@ class ModelCheckoutOrder extends Model {
 	public function addOrderHistory($order_id, $order_status_id, $comment = '', $notify = false, $override = false) {
 		
 		$order_info = $this->getOrder($order_id);
-		print_r('----addOrderHistory----------');
-		die();
 		if ($order_info) {
 			// Fraud Detection
 			$this->load->model('account/customer');
@@ -804,10 +802,8 @@ class ModelCheckoutOrder extends Model {
 				$mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
 				$mail->setText($message);
 
-
 				print_r('----mail start in addOrderHistory----------');
 				print_r($mail);
-				die();
 				print_r('----mail end in addOrderHistory----------');
 				$mail->send();
 			}

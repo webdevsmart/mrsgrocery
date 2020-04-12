@@ -88,7 +88,7 @@ class MsMail extends Model {
 		}
 		print_r('<-----------mail info--------------------->');
 		print_r($mails);
-		
+		die();
 		$mailTransport->sendMails($mails);
 	}
 }
