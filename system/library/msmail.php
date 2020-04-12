@@ -21,8 +21,6 @@ class MsMail extends Model {
 
 	public function sendOrderMails($order_id) {
 		print_r('<-----------msmail info--------------------->');
-		print_r('<-----------msmail info--------------------->');
-		
 		$serviceLocator = $this->MsLoader->load('\MultiMerch\Module\MultiMerch')->getServiceLocator();
 		$mailTransport = $serviceLocator->get('MailTransport');
 		$mails = new \MultiMerch\Mail\Message\MessageCollection();
@@ -44,8 +42,14 @@ class MsMail extends Model {
 			$order_info = $this->model_sale_order->getOrder($order_id);
 		}
 		$this->load->model('tool/upload');
+		
+		print_r(-----start order product-----------);
+		print_r($order_products);
+		print_r(-----end order product-----------);
+		
 		foreach ($order_products as $product) {
 			$seller_id = $this->MsLoader->MsProduct->getSellerId($product['product_id']);
+			$print_r('seller_id: '.$seller_id.'<br>');
 			if ($seller_id) {
 
 				/** @see \MsOrderData::getOrderProducts */
