@@ -43,14 +43,8 @@ class MsMail extends Model {
 			$order_info = $this->model_sale_order->getOrder($order_id);
 		}
 		$this->load->model('tool/upload');
-		
-		print_r(-----start order_info product-----------);
-		//print_r($order_info);
-		//print_r(-----end order product-----------);
-		
 		foreach ($order_products as $product) {
 			$seller_id = $this->MsLoader->MsProduct->getSellerId($product['product_id']);
-			// $print_r('seller_id: '.$seller_id.'<br>');
 			if ($seller_id) {
 				/** @see \MsOrderData::getOrderProducts */
 				$orderSellerProducts = $this->MsLoader->MsOrderData->getOrderProducts(array('order_id' => $order_id, 'seller_id' => $seller_id));
@@ -87,8 +81,6 @@ class MsMail extends Model {
 						'total' => $total,
 						'order_info' => $order_info,
 					));
-				// print_r('MailrProductpurchased:'.$MailProductPurchased);
-				// print_r('order_info:'.$order_info);
 				$mails->add($MailProductPurchased);
 			}
 		}
