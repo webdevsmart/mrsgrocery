@@ -88,11 +88,11 @@ class MsMail extends Model {
 		print_r('<-----------msmail info--------------------->');
 		print_r($seller_id.'br');
 		print_r('order_id:'.$order_id.'br');
-		print_r('mails:'.$mails);
+		//print_r('mails:'.$mails);
 		print_r($order_info['comment']);
 
 		$mailTransport->sendMails($mails);
-		
+
 		die();
 	}
 }
