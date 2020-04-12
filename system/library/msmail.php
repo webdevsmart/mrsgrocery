@@ -22,9 +22,10 @@ class MsMail extends Model {
 	public function sendOrderMails($order_id) {
 		print_r('<-----------msmail info--------------------->');
 		$serviceLocator = $this->MsLoader->load('\MultiMerch\Module\MultiMerch')->getServiceLocator();
+		print_r('<-----sss---->');
+
 		$mailTransport = $serviceLocator->get('MailTransport');
 		$mails = new \MultiMerch\Mail\Message\MessageCollection();
-		print_r('<-----sss---->');
 		$order_products = $this->_getOrderProducts($order_id);
 		
 		if (!$order_products) {	
