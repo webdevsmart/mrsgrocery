@@ -803,14 +803,13 @@ class ModelCheckoutOrder extends Model {
 				$mail->setSender(html_entity_decode($order_info['store_name'], ENT_QUOTES, 'UTF-8'));
 				$mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
 				$mail->setText($message);
-				print_r('----mail start in addOrderHistory----------');
+				print_r('----mail start in addOrderHistory1----------');
 				print_r($mail);
-				die();
+				
 				$mail->send();
 			}
 		}
-		print_r('----mail start in addOrderHistory----------');
+		print_r('----mail start in addOrderHistory2----------');
 		print_r($mail);
-		die();
 	}
 }
