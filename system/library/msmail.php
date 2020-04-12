@@ -27,7 +27,7 @@ class MsMail extends Model {
 
 		$order_products = $this->_getOrderProducts($order_id);
 		
-		if (!$order_products) {
+		if (!$order_products) {	
 			return false;
 		}
 
@@ -44,7 +44,7 @@ class MsMail extends Model {
 		$this->load->model('tool/upload');
 		
 		print_r(-----start order product-----------);
-		print_r($order_info);
+		//print_r($order_info);
 		print_r(-----end order product-----------);
 		
 		foreach ($order_products as $product) {
