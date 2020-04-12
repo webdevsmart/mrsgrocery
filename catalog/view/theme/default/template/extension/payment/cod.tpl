@@ -5,7 +5,6 @@
 </div>
 <script type="text/javascript"><!--
 $('#button-confirm').on('click', function() {
-	//location =  'index.php?route=extension/payment/cod/confirm';
 	$.ajax({
 		type: 'get',
 		url: 'index.php?route=extension/payment/cod/confirm',
@@ -18,7 +17,7 @@ $('#button-confirm').on('click', function() {
 		},
 		success: function() {
 			alert('<?php echo $continue; ?>');
-			location = '<?php echo $continue; ?>';
+			//location = '<?php echo $continue; ?>';
 		}
 	});
 });
