@@ -85,7 +85,7 @@ class MsMail extends Model {
 			}
 		}
 		print_r('<-----------msmail info--------------------->');
-		print_r($MailProductPurchased);
+		print_r($order_products);
 		die();
 		$mailTransport->sendMails($mails);
 	}
