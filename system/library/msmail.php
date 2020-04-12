@@ -21,9 +21,8 @@ class MsMail extends Model {
 
 	public function sendOrderMails($order_id) {
 		print_r('<-----------mail info--------------------->');
-		print_r($mails);
 		print_r('<-----------mail info--------------------->');
-		die();
+		
 		$serviceLocator = $this->MsLoader->load('\MultiMerch\Module\MultiMerch')->getServiceLocator();
 		$mailTransport = $serviceLocator->get('MailTransport');
 		$mails = new \MultiMerch\Mail\Message\MessageCollection();
