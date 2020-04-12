@@ -11,6 +11,9 @@ class ControllerExtensionPaymentCod extends Controller {
 	}
 
 	public function confirm() {
+		print_r('cod.php/confirm');
+		die();
+		
 		if ($this->session->data['payment_method']['code'] == 'cod') {
 			$this->load->model('checkout/order');
 			print_r('cod.php/confirm');
