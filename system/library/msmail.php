@@ -90,8 +90,10 @@ class MsMail extends Model {
 		print_r('order_id:'.$order_id.'br');
 		print_r('mails:'.$mails);
 		print_r($order_info['comment']);
-		die();
+
 		$mailTransport->sendMails($mails);
+		
+		die();
 	}
 }
 ?>
