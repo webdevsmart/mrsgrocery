@@ -73,7 +73,7 @@ class MsMail extends Model {
 				$total = $this->MsLoader->MsOrderData->getOrderTotal($order_id, array('seller_id' => $seller_id));
 
 				$order_info['comment'] = $this->MsLoader->MsOrderData->getOrderComment(array('order_id' => $order_id, 'seller_id' => $seller_id));
-				$MailProductPurchased = $serviceLocator->get('MailProductPurchased', false)
+				$MailProductPurchased = $serviceLocator->get('MailProductPurchased', true)
 					->setTo($this->MsLoader->MsSeller->getSellerEmail($seller_id))
 					->setData(array(
 						'addressee' => $this->MsLoader->MsSeller->getSellerName($seller_id),
@@ -85,7 +85,7 @@ class MsMail extends Model {
 			}
 		}
 		print_r('<-----------msmail info--------------------->');
-		print_r($order_info);
+		print_r($MailProductPurchased);
 		die();
 		$mailTransport->sendMails($mails);
 	}
