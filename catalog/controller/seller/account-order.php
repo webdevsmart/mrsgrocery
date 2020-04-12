@@ -129,9 +129,7 @@ class ControllerSellerAccountOrder extends ControllerSellerAccount {
 		// load default OC language file for orders
 		$this->data = array_merge($this->data, $this->load->language('account/order'));
 		list($template, $children) = $this->MsLoader->MsHelper->loadTemplate('account-order-info');
-		print_r('-------------test git--------------');
-		print_r($this->data);
-		die();
+
 		// order statuses
 		$this->data['order_statuses'] = $this->MsLoader->MsSuborderStatus->getMsSuborderStatuses(
 			array(
@@ -144,7 +142,9 @@ class ControllerSellerAccountOrder extends ControllerSellerAccount {
 			'seller_id' => $this->customer->getId(),
 			'single' => 1
 		));
-
+		print_r('-------------test git--------------');
+		print_r($suborder);
+		die();
 		$this->data['order_status_id'] = isset($suborder['order_status_id']) ? $suborder['order_status_id'] : 0;
 		$this->data['suborder_id'] = isset($suborder['suborder_id']) ? $suborder['suborder_id'] : '';
 
