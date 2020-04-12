@@ -237,8 +237,11 @@ $this->load->model('journal2/newsletter');
 					$message .= '</html>' . "\n";
 
 					foreach ($emails as $email) {
+
 						if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+
 							$mail = new Mail();
+
 							$mail->protocol = $this->config->get('config_mail_protocol');
 							$mail->parameter = $this->config->get('config_mail_parameter');
 							$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
@@ -248,10 +251,15 @@ $this->load->model('journal2/newsletter');
 							$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
 
 							$mail->setTo($email);
+
 							$mail->setFrom($store_email);
+
 							$mail->setSender(html_entity_decode($store_name, ENT_QUOTES, 'UTF-8'));
+
 							$mail->setSubject(html_entity_decode($this->request->post['subject'], ENT_QUOTES, 'UTF-8'));
+
 							$mail->setHtml($message);
+
 							$mail->send();
 						}
 					}
