@@ -24,7 +24,7 @@ class MsMail extends Model {
 		$serviceLocator = $this->MsLoader->load('\MultiMerch\Module\MultiMerch')->getServiceLocator();
 		$mailTransport = $serviceLocator->get('MailTransport');
 		$mails = new \MultiMerch\Mail\Message\MessageCollection();
-		print_r($mails);
+		//print_r($mails);
 		$order_products = $this->_getOrderProducts($order_id);
 		
 		if (!$order_products) {	
