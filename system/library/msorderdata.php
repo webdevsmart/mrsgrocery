@@ -140,7 +140,7 @@ class MsOrderData extends Model {
 			. (isset($data['order_id']) ? " AND order_id =  " .  (int)$data['order_id'] : '');
 
 		$res = $this->db->query($sql);
-
+		print_r('sql:'.$sql);
 		return isset($res->row['comment']) ? $res->row['comment'] : '';
 	}
 
