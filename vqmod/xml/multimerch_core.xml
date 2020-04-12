@@ -248,9 +248,12 @@
 		<operation>
 			<search position="before"><![CDATA[
 				// Admin Alert Mail
+				print_r('------------Admin alert mail----------------);
 			]]></search>
 			<add><![CDATA[
+			print_r('------------confirm order send header mail part----------------);
 			if(MsLoader::getInstance()->MsHelper->isInstalled()) {
+				print_r('------------confirm order send main mail part----------------);
 				$this->MsLoader->MsMail->sendOrderMails($order_id);
 			}
 			]]></add>

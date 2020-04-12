@@ -16,6 +16,7 @@ $('#button-confirm').on('click', function() {
 			$('#button-confirm').button('reset');
 		},
 		success: function() {
+			alert('<?php echo $continue; ?>');
 			location = '<?php echo $continue; ?>';
 		}
 	});
