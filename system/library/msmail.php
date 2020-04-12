@@ -24,7 +24,7 @@ class MsMail extends Model {
 		$serviceLocator = $this->MsLoader->load('\MultiMerch\Module\MultiMerch')->getServiceLocator();
 		$mailTransport = $serviceLocator->get('MailTransport');
 		$mails = new \MultiMerch\Mail\Message\MessageCollection();
-
+		print_r($mails);
 		$order_products = $this->_getOrderProducts($order_id);
 		
 		if (!$order_products) {	
@@ -43,9 +43,9 @@ class MsMail extends Model {
 		}
 		$this->load->model('tool/upload');
 		
-		print_r(-----start order product-----------);
+		//print_r(-----start order product-----------);
 		//print_r($order_info);
-		print_r(-----end order product-----------);
+		//print_r(-----end order product-----------);
 		
 		foreach ($order_products as $product) {
 			$seller_id = $this->MsLoader->MsProduct->getSellerId($product['product_id']);
