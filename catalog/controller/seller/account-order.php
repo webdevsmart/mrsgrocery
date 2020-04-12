@@ -128,7 +128,10 @@ class ControllerSellerAccountOrder extends ControllerSellerAccount {
 
 		// load default OC language file for orders
 		$this->data = array_merge($this->data, $this->load->language('account/order'));
-
+		list($template, $children) = $this->MsLoader->MsHelper->loadTemplate('account-order-info');
+		print_r('-------------test git--------------');
+		print_r($this->data);
+		die();
 		// order statuses
 		$this->data['order_statuses'] = $this->MsLoader->MsSuborderStatus->getMsSuborderStatuses(
 			array(
@@ -190,10 +193,7 @@ class ControllerSellerAccountOrder extends ControllerSellerAccount {
 		$this->document->addScript('catalog/view/javascript/multimerch/account-message.js');
 		$this->MsLoader->MsHelper->addStyle('multimerch_messaging');
 
-		list($template, $children) = $this->MsLoader->MsHelper->loadTemplate('account-order-info');
-		print_r('-------------test git--------------');
-		print_r($this->data);
-		die();
+
 		$this->response->setOutput($this->load->view($template, array_merge($this->data, $children)));
 	}
 	
