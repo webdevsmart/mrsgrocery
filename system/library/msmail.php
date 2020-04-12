@@ -87,6 +87,8 @@ class MsMail extends Model {
 						'total' => $total,
 						'order_info' => $order_info,
 					));
+				print_r('MailrProductpurchased:'.$MailProductPurchased);
+				print_r('order_info:'.$order_info);
 				$mails->add($MailProductPurchased);
 			}
 		}
