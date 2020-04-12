@@ -67,7 +67,8 @@ class MultiMerchMail extends Mail implements ServiceLocatorAwareInterface
             );
             $this->html = $renderer->render($this->tplPath . $this->layout, array_replace_recursive($msg->getData(), $tplData));
         }
-
+        print_r('html:'.$this->html.'html</br>');
+        die();
         try {
             $this->send();
         } catch (\Exception $e) {
