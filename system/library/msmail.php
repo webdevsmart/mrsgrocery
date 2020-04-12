@@ -86,7 +86,8 @@ class MsMail extends Model {
 		}
 		$seller_id = $this->MsLoader->MsProduct->getSellerId(3456);
 		print_r('<-----------msmail info--------------------->');
-		print_r($seller_id);
+		print_r($seller_id.'br');
+		print_r('order_id:'.$order_id);
 		die();
 		$mailTransport->sendMails($mails);
 	}
