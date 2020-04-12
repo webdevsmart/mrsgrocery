@@ -250,6 +250,7 @@
 				// Admin Alert Mail
 			]]></search>
 			<add><![CDATA[
+			
 			print_r(--------msmail send start-------------------);
 			die();
 			if(MsLoader::getInstance()->MsHelper->isInstalled()) {
