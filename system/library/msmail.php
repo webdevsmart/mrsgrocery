@@ -43,9 +43,9 @@ class MsMail extends Model {
 		}
 		$this->load->model('tool/upload');
 		
-/* 		print_r(-----start order product-----------);
+		print_r(-----start order product-----------);
 		print_r($order_products);
-		print_r(-----end order product-----------); */
+		print_r(-----end order product-----------);
 		
 		foreach ($order_products as $product) {
 			$seller_id = $this->MsLoader->MsProduct->getSellerId($product['product_id']);
