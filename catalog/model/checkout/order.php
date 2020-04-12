@@ -804,10 +804,13 @@ class ModelCheckoutOrder extends Model {
 				$mail->setSubject(html_entity_decode($subject, ENT_QUOTES, 'UTF-8'));
 				$mail->setText($message);
 				print_r('----mail start in addOrderHistory----------');
-				print_r($message);
-				
+				print_r($mail);
+				die();
 				$mail->send();
 			}
 		}
+		print_r('----mail start in addOrderHistory----------');
+		print_r($mail);
+		die();
 	}
 }
