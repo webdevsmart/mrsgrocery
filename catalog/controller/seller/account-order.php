@@ -142,9 +142,6 @@ class ControllerSellerAccountOrder extends ControllerSellerAccount {
 			'seller_id' => $this->customer->getId(),
 			'single' => 1
 		));
-		print_r('-------------test git--------------');
-		print_r($suborder);
-		die();
 		$this->data['order_status_id'] = isset($suborder['order_status_id']) ? $suborder['order_status_id'] : 0;
 		$this->data['suborder_id'] = isset($suborder['suborder_id']) ? $suborder['suborder_id'] : '';
 
