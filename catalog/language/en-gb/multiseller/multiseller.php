@@ -119,7 +119,7 @@ EOT;
 $_['ms_mail_product_purchased_no_email'] = <<<EOT
 Your product(s) have been purchased from %s.
 
-Customer: %s
+Customer: %s(%s)
 Shipping Method: %s
 Products:
 %s
