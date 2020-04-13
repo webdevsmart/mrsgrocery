@@ -15,11 +15,12 @@ foreach ($this->order_products as $p) {
 
     $products .= "<br>";
 }
+$order_link = HTTP_SERVER.'/seller/account-order/viewOrder/?order_id='.$order_info['id'];
 ?>
 <?php if ($this->getMultiMerchModule()->getConfigOC('msconf_hide_customer_email')): ?>
-    <p><?php echo nl2br(sprintf($this->translate('ms_mail_product_purchased_no_email'), $this->sender, $this->order_info['firstname'] . ' ' . $this->order_info['lastname'], $order_info['email'], $order_info['shipping_method'], $products, $this->total)) ?></p>
+    <p><?php echo nl2br(sprintf($this->translate('ms_mail_product_purchased_no_email'), $order_link, $this->sender, $this->order_info['firstname'] . ' ' . $this->order_info['lastname'], $order_info['email'], $order_info['shipping_method'], $products, $this->total)) ?></p>
 <?php else: ?>
-    <p><?php echo nl2br(sprintf($this->translate('ms_mail_product_purchased'), $this->sender, $this->order_info['firstname'] . ' ' . $this->order_info['lastname'], $this->order_info['email'], $order_info['shipping_method'], $products, $this->total)) ?></p>
+    <p><?php echo nl2br(sprintf($this->translate('ms_mail_product_purchased'), $order_link, $this->sender, $this->order_info['firstname'] . ' ' . $this->order_info['lastname'], $this->order_info['email'], $order_info['shipping_method'], $products, $this->total)) ?></p>
 <?php endif; ?>
 
 <?php if ($this->order_info['comment']): ?>

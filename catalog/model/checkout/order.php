@@ -806,7 +806,5 @@ class ModelCheckoutOrder extends Model {
 				$mail->send();
 			}
 		}
-		print_r('----mail start in addOrderHistory2----------');
-		print_r($mail);
 	}
 }

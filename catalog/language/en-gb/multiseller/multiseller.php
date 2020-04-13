@@ -107,6 +107,7 @@ EOT;
 
 $_['ms_mail_subject_product_purchased'] = 'New order';
 $_['ms_mail_product_purchased'] = <<<EOT
+Order Link: %s
 Your product(s) have been purchased from %s.
 
 Customer Name: %s (%s)
@@ -117,6 +118,7 @@ Total: %s
 EOT;
 
 $_['ms_mail_product_purchased_no_email'] = <<<EOT
+Order Link: %s
 Your product(s) have been purchased from %s.
 
 Customer: %s(%s)
