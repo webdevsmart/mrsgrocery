@@ -86,13 +86,8 @@ class MsMail extends Model {
 		}
 		$seller_id = $this->MsLoader->MsProduct->getSellerId(3457);
 		print_r('<-----------msmail info--------------------->');
-		print_r($seller_id.'br');
-		print_r('order_id:'.$order_id.'br');
-		//print_r('mails:'.$mails);
-		$order_info['comment'] = $this->MsLoader->MsOrderData->getOrderComment(array('order_id' => $order_id, 'seller_id' => $seller_id));
 		print_r($order_info);
 		print_r($mails->getList());
-
 		$mailTransport->sendMails($mails);
 
 		die();
