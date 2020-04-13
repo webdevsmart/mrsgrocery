@@ -132,7 +132,7 @@
 							<?php } ?></td>
 						<td class="left"><?php echo $product['model']; ?></td>
 						<td class="right"><?php echo $product['quantity']; ?></td>
-						<td class="right"><?php echo $product['price']; ?></td>
+						<td class="right"><?php echo $product['price']; ?><input type="number" name="final-rate" id="final-rate" value="1"></td>
 						<?php if($this->config->get('msconf_shipping_type') == 2 && $mm_shipping_flag) { ?>
 							<td class="right"><?php echo $product['shipping_cost']; ?></td>
 						<?php } ?>
